@@ -76,7 +76,7 @@ const SliderToggle = ({
           transition={{ type: "spring", damping: 15, stiffness: 250 }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.9 }}
-          className="h-full w-1/2 rounded-full bg-[#6F07FB] shadow-md"
+          className="h-full w-1/2 rounded-full bg-[#CA160B] shadow-md"
         />
       </div>
     </div>

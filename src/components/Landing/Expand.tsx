@@ -41,7 +41,7 @@ export default function Expand() {
 
 
   return (
-    <div className="w-full p-6 bg-zinc-200">
+    <div className="w-full p-6 bg-[#D8D3CF]">
       <div className="max-w-6xl mx-auto space-y-4">
         {sections.map((section) => {
           const isOpen = expanded === section.id;
@@ -68,7 +68,7 @@ export default function Expand() {
                     transition={{ duration: 0.4 }}
                     className="px-6 pb-6 md:px-8 md:pb-8"
                   >
-                    <p className="font-inter  text-lg md:w-[80%]">
+                    <p className="font-inter font-semibold  text-lg md:w-[80%]">
                       {section.content}
                     </p>
                   </motion.div>
