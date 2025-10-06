@@ -7,7 +7,7 @@ import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 const socialLinks = [
   {
     name: "Resume",
-    href: "https://drive.google.com/file/d/1aLZBGD6XLk5NG2fMZ5WjaLTliBCXNeby/view?usp=drive_link",
+    href: "https://drive.google.com/file/d/1Ru0ur9WoohaKgSyMxUM-Zdcw-eBZxDWJ/view?usp=sharing",
     color: "text-black",
     icon: (
       <svg

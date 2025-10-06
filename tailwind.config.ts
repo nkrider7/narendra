@@ -75,7 +75,7 @@ export default {
   				'sans-serif'
   			],
   			inter: [
-  				'var(--font-inter-sans)',
+  				'var(--font-poppins-sans)',
   				'system-ui',
   				'sans-serif'
   			]

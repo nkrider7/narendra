@@ -21,8 +21,8 @@ export default function SoulArise() {
         {/* Hero Section */}
         <div className="grid md:grid-cols-3 gap-6">
           {/* Left Large Card */}
-          
-          <Link  href="https://soularise.netlify.app/" className="md:col-span-2 bg-white rounded-xl overflow-hidden relative p-4 flex flex-col md:flex-row justify-center">
+
+          <Link href="https://soularise.netlify.app/" className="md:col-span-2 bg-white rounded-xl overflow-hidden relative p-4 flex flex-col md:flex-row justify-center">
             <Image
               src="/soul.webp"
               alt="Phone Mockup"
@@ -31,7 +31,7 @@ export default function SoulArise() {
               className="rounded-2xl object-cover md:w-[70%] mx-auto "
             />
             <h1 className="text-4xl md:text-5xl font-guzan text-black  md:w-[30%] text-center md:text-start md:px-4 ">
-				Gamify Your <span className="text-[#413BFF]">Growth</span>, Level Up Your <span className="text-[#4611FD]">Soul</span>
+              Gamify Your <span className="text-[#413BFF]">Growth</span>, Level Up Your <span className="text-[#4611FD]">Soul</span>
               {/* Seamlessly{" "} */}
               {/* <span className="text-blue-400">Schedule</span> and Monitor{" "}
               <span className="text-blue-400">Projects</span> */}
@@ -39,20 +39,20 @@ export default function SoulArise() {
           </Link>
 
           {/* Right Small Card */}
-         <div className="bg-neutral-900 rounded-xl overflow-hidden w-full h-full">
-  <Image
-    src="https://i.makeagif.com/media/6-25-2021/S4k_Db.gif"
-    alt="Coin"
-    width={1200}
-    height={1200}
-    className="w-full h-full object-cover"
-  />
-</div>
+          <div className="bg-neutral-900 rounded-xl overflow-hidden w-full h-full">
+            <Image
+              src="https://giffiles.alphacoders.com/221/221968.gif"
+              alt="Coin"
+              width={1200}
+              height={1200}
+              className="w-full h-full object-cover"
+            />
+          </div>
 
         </div>
 
 
-      
+
       </div>
     </section>
   );
