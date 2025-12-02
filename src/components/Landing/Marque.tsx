@@ -1,6 +1,5 @@
 import { Marquee } from "@/components/magicui/marquee";
 import Image from "next/image";
-import Heading from "../ui/Heading";
 import Link from "next/link";
 
 const reviews = [
@@ -65,7 +64,7 @@ const ReviewCard = ({
 export function MarqueeDemo() {
 	return (
 		<div className="relative flex w-full flex-col items-center mt-10 justify-center overflow-hidden">
-			<Heading >My Works</Heading>
+			<h1 className="font-inter uppercase text-3xl mb-8" style={{fontWeight: "200"}}>Our<span style={{fontWeight:'800'}}>Works</span></h1>
 			<Marquee pauseOnHover className="[--duration:20s]">
 				{firstRow.map((review) => (
 					<Link key={review.name} href={review.link}>

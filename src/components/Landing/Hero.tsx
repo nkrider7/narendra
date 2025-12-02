@@ -1,59 +1,92 @@
 "use client";
-import React from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useState, useRef } from "react";
+import { motion } from "framer-motion";
 import SocialIcons from "./SocialLinks";
+import { Pause, Play } from "lucide-react";
+import Image from "next/image";
 
 export default function Hero() {
-  const { scrollYProgress } = useScroll();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Create smooth scroll-based transforms
-  const scale = useTransform(scrollYProgress, [0, 0.4], [1, 12.5]); // zoom
-  const y = useTransform(scrollYProgress, [0, 0.4], [0, 2000]); // translate downward (in px)
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0.4]); // fade slightly
+  const toggleMusic = () => {
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
+  };
 
   return (
     <div
-      className="h-screen md:h-[100vh] bg-black bg-fixed flex flex-col overflow-hidden justify-start items-center relative"
+      className="h-screen md:h-[100vh] bg-black flex flex-col overflow-hidden justify-start items-center relative"
       style={{
-        backgroundImage: "url(/myhero.jpeg)",
+        backgroundImage: isPlaying
+          ? "url(/bgc.gif)"   // new bg when music plays
+          : "url(/bg.png)",   // default bg
         backgroundSize: "cover",
         backgroundPosition: "bottom",
+        transition: "background-image 0.4s ease-in-out",
       }}
     >
-      <div className="z-10"></div>
+      {/* Audio Element */}
+      <audio ref={audioRef} src="/bg.mp3" preload="auto" />
 
-      <div className="z-50 w-full my-10 rounded-lg text-center">
-        <h1 className="text-white hidden font-sink text-3xl md:text-4xl">
-          Hello, My Name is
-        </h1>
+      {/* Music Button */}
+      <motion.button
+        onClick={toggleMusic}
+        animate={{ scale: isPlaying ? 1.2 : 1 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="absolute top-12 right-9 z-50 p-2  rounded-full text-white bg-purple-700/70 backdrop-blur-sm font-semibold shadow-lg cursor-pointer"
+      >
+        {isPlaying ? <Pause size={14} className="animate-spin" /> : <Play size={14} />}
+      </motion.button>
 
-        {/* Animated Narendra text */}
+      <div className="z-40 w-full my-10 rounded-lg text-center">
         <motion.h1
           style={{
-            backgroundImage:
-              "url(https://animesher.com/orig/0/72/728/7283/animesher.com_kaneki-amazing-anime-gif-728332.gif)",
+            color: "transparent",
+            backgroundImage: "linear-gradient(90deg, #4916ce, #8600d5)",
+            backgroundClip: "text",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
-            color: "white",
-            scale,
-            y,
-            opacity,
           }}
-          className="text-6xl md:text-9xl w-full font-sink flex text-center items-center justify-center"
+          whileHover={{
+            backgroundImage: "linear-gradient(90deg, #8600d5, #3333ff)",
+            transition: { duration: 0.2, ease: "easeInOut" },
+          }}
+          className="text-6xl cursor-pointer md:text-9xl w-full font-sink flex text-center items-center justify-center"
         >
           Narendra
         </motion.h1>
 
-        <h1 className="text-[#161413] text-center font-sink text-2xl md:text-xl">
+        <h1 className="text-white text-center font-sink text-2xl md:text-2xl">
           Full-Stack Developer
         </h1>
+        <h1 className=" absolute bottom-6 left-6 text-white text-center font-inter text-2xl md:text-xl">
+          Code. <span style={{
+            fontWeight: 'bold'
+          }} className="font-inter ">Design.</span> Create.  <span style={{
+            fontWeight: 'bold'
+          }} className="font-inter ">Repeat.</span>
+        </h1>
+
+        {/* dancing gif when music plays */}
+        {isPlaying && (
+          <Image src="/gojo.gif" alt="signature" width={150} height={50} className="absolute bottom-0 right-8 md:right-20 mt-4" />
+        )}
+
 
         <div className="block md:hidden">
           <SocialIcons direction="horizontal" />
         </div>
       </div>
 
-      <div className="hidden md:block md:absolute md:left-10 md:top-1/2 md:-translate-y-1/2">
+      <div className="hidden md:block md:absolute  md:right-10 md:-bottom-32 md:-translate-y-1/2">
         <SocialIcons direction="vertical" />
       </div>
     </div>

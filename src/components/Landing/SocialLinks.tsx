@@ -8,7 +8,7 @@ const socialLinks = [
   {
     name: "Resume",
     href: "https://drive.google.com/file/d/1Ru0ur9WoohaKgSyMxUM-Zdcw-eBZxDWJ/view?usp=sharing",
-    color: "text-black",
+    color: "text-white",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ const socialLinks = [
     name: "Github",
     href: "https://github.com/nkrider7",
     color: "text-white",
-    icon: <FaGithub size={24} className="text-[#333]" />,
+    icon: <FaGithub size={24} className="text-[#3b20b5]" />,
   },
   {
     name: "LinkedIn",
@@ -68,7 +68,7 @@ export default function SocialIcons({ direction = "horizontal" }: { direction?: 
             <Link
               href={social.href}
               aria-label={social.name}
-              className={`flex items-center justify-center w-12 h-12 rounded-full bg-white text-gray-700 transition-shadow duration-300 ease-in-out hover:shadow-xl ${social.color}`}
+              className={`flex items-center justify-center w-12 h-12 rounded-full bg-white/5 text-gray-700 transition-shadow duration-300 ease-in-out hover:shadow-xl ${social.color}`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -76,9 +76,9 @@ export default function SocialIcons({ direction = "horizontal" }: { direction?: 
             </Link>
             <div
               className={`absolute ${
-                direction === "vertical" ? "left-14 top-1/2 -translate-y-1/2" : "-top-4 left-1/2 -translate-x-1/2"
+                direction === "vertical" ? "right-14 top-1/2  -translate-y-1/2" : "-top-4 right-1/2 translate-x-1/2"
               } font-bold bg-black text-white text-sm px-3 py-1 rounded-md opacity-0 group-hover:opacity-100 ${
-                direction === "vertical" ? "group-hover:left-16" : "group-hover:-top-10"
+                direction === "vertical" ? "group-hover:right-16" : "group-hover:-top-10"
               } transition-all duration-300 ${social.color}`}
             >
               {social.name}

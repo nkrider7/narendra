@@ -9,12 +9,12 @@ export default function SoulArise() {
         {/* Top Title Row */}
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h4 className="text-gray-400 font-semibold text-sm">Currently Working</h4>
-            <h2 className="text-xl font-sink font-semibold">Soul Arise Project</h2>
+            <h4 className="text-gray-400 font-inter text-sm">Currently Working</h4>
+            <h2 className="text-xl font-inter" style={{fontWeight: "600"}}>Soul Arise Project</h2>
           </div>
           <div className="text-right">
-            <h4 className="text-gray-400 font-guzan text-sm">Anime based Social Self improvement</h4>
-            <p className="text-xs font-semibold text-gray-500">React Native App</p>
+            <h1 className="text-gray-400 font-inter text-sm" style={{fontWeight: "600"}}>Anime based Social Self improvement</h1>
+            <p className="text-xs font-inter font-semibold text-gray-500">React Native App</p>
           </div>
         </div>
 
@@ -41,11 +41,11 @@ export default function SoulArise() {
           {/* Right Small Card */}
           <div className="bg-neutral-900 rounded-xl overflow-hidden w-full h-full">
             <Image
-              src="https://giffiles.alphacoders.com/221/221968.gif"
+              src="/cover.png"
               alt="Coin"
               width={1200}
               height={1200}
-              className="w-full h-full object-cover"
+              className="w-full h-full hover:scale-125 transition-transform duration-300 object-cover"
             />
           </div>
 

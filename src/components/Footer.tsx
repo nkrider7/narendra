@@ -5,13 +5,14 @@ import Image from "next/image"
 export default function Footer() {
 	return (
 		<footer className="bg-[#111111] text-white py-16">
+
 			<div className="container mx-auto px-4">
 				<div className="md:hidden grid grid-cols-2 mb-8">
 					<Image
 						src={"/logo.svg"}
 						width={200} height={200}
 						className="" alt="logo" />
-					<div className="text-xl mt-4 ml-6 font-guzan font-medium">
+					<div className="text-xl mt-4 ml-6 font-inter  font-bold">
 						Building Digital Agency
 						<address className="not-italic text-sm font-inter text-gray-400 space-y-1">
 							Dodhpurs
@@ -29,7 +30,7 @@ export default function Footer() {
 
 				<div className="grid grid-cols-2 md:grid-cols-3 gap-12">
 					{/* Left Column */}
-					<div className="space-y-4 font-sink">
+					<div className="space-y-4 font-inter">
 						<Link href="/our-work" className="block text-2xl font-medium hover:text-gray-300">
 							Our work
 						</Link>
@@ -45,14 +46,12 @@ export default function Footer() {
 						<Link href="/contact" className="block text-2xl font-medium hover:text-gray-300">
 							Contact
 						</Link>
-						<Link href="/careers" className="block text-2xl font-medium hover:text-gray-300">
-							Careers
-						</Link>
+						
 					</div>
 
 					{/* Middle Column */}
 					<div className="flex justify-between  w-full">
-						<div className="space-y-4 font-sink font-semibold mr-10">
+						<div className="space-y-4 font-inter font-semibold mr-10">
 							<Link href="/strategy" className="block text-xl  text-gray-400 hover:text-gray-300">
 								Strategy
 							</Link>
@@ -73,7 +72,7 @@ export default function Footer() {
 							width={200} height={200}
 							className="" alt="logo" />
 						<div className="text-2xl font-guzan font-medium">
-							Building Digital Agency  
+							Building Digital Agency
 						</div>
 						<div className="text-2xl font-guzan font-medium">
 							Aligarh, UP, India  <span className="text-gray-400">202001</span>
@@ -93,15 +92,7 @@ export default function Footer() {
 				{/* Bottom Bar */}
 				<div className="mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
 					<div className="flex flex-wrap gap-6 text-sm text-gray-400">
-						<Link href="/privacy" className="hover:text-gray-300">
-							Privacy Policy
-						</Link>
-						<Link href="/cookies" className="hover:text-gray-300">
-							Cookie Policy
-						</Link>
-						<Link href="/terms" className="hover:text-gray-300">
-							Terms & Conditions
-						</Link>
+				
 						<span>© 2025 Ask BrooCode. All rights reserved.</span>
 					</div>
 

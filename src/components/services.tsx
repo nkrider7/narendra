@@ -8,12 +8,12 @@ export const HoverImageLinks = () => {
   return (
     <section className="bg-myblack p-4 md:p-8">
       <div className="mx-auto max-w-5xl">
-		<h1 className="text-3xl md:text-3xl font-sink text-white text-center">My Certifications</h1>
+		<h1 className="text-3xl md:text-3xl font-inter text-white text-center">My <span className="font-bold">Certifications</span></h1>
         <Link
           heading="Internship Certificate"
           subheading="Software Development Intern from Boomzo"
           imgSrc="/cert/boomzo.webp"
-          href="https://www.hicksindia.in/"
+          href="https://boomzo.in/"
         />
         <Link
           heading="Learning Certificate"
@@ -101,7 +101,7 @@ const Link = ({ heading, imgSrc, subheading, href }: LinkProps) => {
             staggerChildren: 0.075,
             delayChildren: 0.25,
           }}
-          className="relative z-10 block font-sink text-2xl font-bold text-neutral-300 transition-colors duration-500 group-hover:text-neutral-50 md:text-4xl"
+          className="relative z-10 block font-inter text-2xl font-bold text-neutral-300 transition-colors duration-500 group-hover:text-neutral-50 md:text-4xl"
         >
           {heading.split("").map((l, i) => (
             <motion.span
@@ -135,7 +135,7 @@ const Link = ({ heading, imgSrc, subheading, href }: LinkProps) => {
         }}
         transition={{ type: "spring" }}
         src={imgSrc}
-        className="absolute z-0 h-24 w-32 rounded-lg object-cover md:h-48 md:w-64"
+        className="absolute z-0 h-24 w-32 rounded-lg object-contain md:h-48 md:w-64"
         alt={`Image representing a link for ${heading}`}
       />
 

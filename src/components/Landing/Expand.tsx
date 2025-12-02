@@ -35,7 +35,7 @@ export default function Expand() {
 
   return (
     <div className="w-full p-6 bg-[#D8D3CF]">
-      <div className="max-w-6xl mx-auto space-y-4">
+      <div className="max-w-7xl mx-auto space-y-4">
         {sections.map((section) => {
           const isOpen = expanded === section.id;
           return (
@@ -49,7 +49,7 @@ export default function Expand() {
               }`}
             >
               <div className="flex flex-col md:flex-row justify-between md:items-center p-6 md:p-8">
-                <h2 className="font-sink text-3xl md:text-4xl">{section.title}</h2>
+                <h2 className="font-inter text-3xl md:text-4xl" style={{fontWeight: "600"}}>{section.title}</h2>
               </div>
 
               <AnimatePresence>
@@ -102,7 +102,7 @@ function TechStackGrid() {
             className={`${tech.color} rounded-lg p-4 flex flex-col  items-center gap-2 hover:scale-105 transition-transform shadow-md`}
           >
             <span className="text-3xl">{tech.icon}</span>
-            <span className="font-semibold text-base text-center font-guzan">{tech.name}</span>
+            <span className="font-semibold text-base text-center font-inter">{tech.name}</span>
           </motion.div>
         ))}
       </div>
