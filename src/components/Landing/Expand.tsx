@@ -7,11 +7,6 @@ export default function Expand() {
 
   const sections = [
     {
-      id: "skills",
-      title: "Tech Stack",
-      component: <TechStackGrid />
-    },
-    {
       id: "experience",
       title: "Experience",
       component: <ExperienceTimeline />
@@ -74,41 +69,6 @@ export default function Expand() {
   );
 }
 
-// Tech Stack Component with Icon Grid
-function TechStackGrid() {
-  const techStack = [
-    { name: "React", icon: "⚛️", color: "bg-blue-100 text-blue-700" },
-    { name: "Next.js", icon: "▲", color: "bg-gray-100 text-black" },
-    { name: "React Native", icon: "📱", color: "bg-purple-100 text-purple-700" },
-    { name: "Node.js", icon: "🟢", color: "bg-green-100 text-green-700" },
-    { name: "Tailwind", icon: "🎨", color: "bg-cyan-100 text-cyan-700" },
-    { name: "MongoDB", icon: "🍃", color: "bg-emerald-100 text-emerald-700" },
-    { name: "TypeScript", icon: "TS", color: "bg-blue-100 text-blue-600" },
-    { name: "Expo", icon: "🎯", color: "bg-indigo-100 text-indigo-700" }
-  ];
-
-  return (
-    <div className="space-y-4">
-      <p className="text-lg font-medium font-inter text-gray-700">
-        Technologies I work with daily to build modern applications
-      </p>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {techStack.map((tech, index) => (
-          <motion.div
-            key={tech.name}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            className={`${tech.color} rounded-lg p-4 flex flex-col  items-center gap-2 hover:scale-105 transition-transform shadow-md`}
-          >
-            <span className="text-3xl">{tech.icon}</span>
-            <span className="font-semibold text-base text-center font-inter">{tech.name}</span>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 // Experience Timeline Component
 function ExperienceTimeline() {

@@ -78,7 +78,12 @@ export default {
   				'var(--font-poppins-sans)',
   				'system-ui',
   				'sans-serif'
-  			]
+  			],
+			telma: [
+				'var(--font-telma)',
+				'system-ui',
+				'sans-serif'
+			]
   		},
   		keyframes: {
   			shine: {

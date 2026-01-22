@@ -73,7 +73,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-5xl md:text-7xl font-sink lg:text-8xl font-extrabold leading-tight mb-6 text-unfold-dark-text">
+            <h1 className="text-5xl md:text-7xl font-telma lg:text-8xl font-extrabold leading-tight mb-6 text-unfold-dark-text">
               How Can<br />I Help You!
             </h1>
 

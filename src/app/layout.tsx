@@ -16,6 +16,21 @@ const sink = localFont({
   ],
   variable: '--font-sink',
 })
+
+const telma = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Telma-Light.otf',
+      weight: '400'
+    },
+    {
+      path: '../../public/fonts/Telma-Bold.otf',
+      weight: '700'
+    }
+  ],
+  variable: '--font-telma',
+})
+
 const guzan = localFont({
   src: [
     {
@@ -59,7 +74,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${sink.variable} ${guzan.variable} ${inter.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${telma.variable} ${sink.variable} ${guzan.variable} ${inter.variable} antialiased`}
       >
         {children}
       </body>

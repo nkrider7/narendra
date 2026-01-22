@@ -25,14 +25,18 @@ export default function Hero() {
     <div
       className="h-screen md:h-[100vh] bg-black flex flex-col overflow-hidden justify-start items-center relative"
       style={{
-        backgroundImage: isPlaying
-          ? "url(/bgc.gif)"   // new bg when music plays
-          : "url(/bg.png)",   // default bg
+        backgroundImage: "url(/bg.png)",   // default bg
         backgroundSize: "cover",
         backgroundPosition: "bottom",
         transition: "background-image 0.4s ease-in-out",
       }}
     >
+
+     { 
+      isPlaying && (
+         <img src="/bgm.png" alt="background" className="absolute inset-0  w-full h-full object-cover z-0" />
+      )
+     }
       {/* Audio Element */}
       <audio ref={audioRef} src="/bg.mp3" preload="auto" />
 
