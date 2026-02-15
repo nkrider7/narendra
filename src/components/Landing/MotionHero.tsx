@@ -38,8 +38,15 @@ export default function MotionHero() {
 
         {/* FIRST Screen */}
         <motion.div
-          style={{ x: boxX, rotate: boxRotate, opacity: boxOpacity }}
+          style={{ x: boxX, rotate: boxRotate, opacity: boxOpacity,
+            // backgroundImage: "url('https://i.pinimg.com/originals/85/09/b3/8509b37153cfc1baae64269809782b8f.gif')",
+
+            // backgroundSize: "cover",
+            // backgroundPosition: "center",
+            // backgroundRepeat: "no-repeat",
+           }}
           className="absolute left-0 w-1/2 h-screen z-40 bg-gradient-to-t from-[#b0a48c] to-[#f2e6d6]"
+
         >
           <div className="flex h-full w-full items-center justify-center px-12">
             <div className="max-w-[520px] text-center space-y-4">
@@ -56,7 +63,13 @@ export default function MotionHero() {
 
         {/* SECOND Screen */}
         <motion.div
-          style={{ x: boxX2, rotate: boxRotate2, opacity: boxOpacity2 }}
+          style={{ x: boxX2, rotate: boxRotate2, opacity: boxOpacity2, 
+            // backgroundImage: "url('https://i.pinimg.com/originals/43/b5/d4/43b5d4e0d1f8815e8e7e304a136f7ec7.gif')",
+
+            // backgroundSize: "cover",
+            // backgroundPosition: "center",
+            // backgroundRepeat: "no-repeat",
+           }}
           className="absolute right-0 w-1/2 h-screen z-30 bg-gradient-to-t from-[#e3a387] to-[#c11c09]"
         >
           <div className="flex h-full w-full items-center justify-center px-12">
