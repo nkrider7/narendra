@@ -63,7 +63,7 @@ export default function GitHubShowcasePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#F0EDE8] to-[#E8E3DC] flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] flex items-center justify-center">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
@@ -74,21 +74,21 @@ export default function GitHubShowcasePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F0EDE8] to-[#E8E3DC]">
+    <div className="min-h-screen bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a]">
       {/* Header with Back Button */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#F26F56]/20"
+        className="sticky top-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/10"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <motion.h1
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-2xl font-telma font-bold text-[#8B4513]"
+            className="text-2xl font-telma font-bold text-white"
           >
-            GitHub Showcase
+            nkrider7
           </motion.h1>
           <Link href="/">
             <motion.button
@@ -107,12 +107,12 @@ export default function GitHubShowcasePage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section - Two Column Layout */}
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
-          {/* Left Column - Light Beige */}
+          {/* Left Column - Dark Card */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col justify-center px-8 md:px-12 lg:px-16 py-12 bg-[#F0EDE8] rounded-3xl shadow-xl"
+            className="flex flex-col justify-center px-8 md:px-12 lg:px-16 py-12 bg-[#1a1a1a] border border-white/10 rounded-3xl shadow-xl"
           >
             {stats && (
               <>
@@ -120,7 +120,7 @@ export default function GitHubShowcasePage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="text-5xl md:text-6xl lg:text-7xl font-telma font-bold text-[#8B4513] mb-6 leading-tight"
+                  className="text-5xl md:text-6xl lg:text-7xl font-telma font-bold text-white mb-6 leading-tight"
                 >
                   {stats.name || stats.username}
                 </motion.h2>
@@ -128,7 +128,7 @@ export default function GitHubShowcasePage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="text-lg md:text-xl font-inter text-gray-700 mb-8"
+                  className="text-lg md:text-xl font-inter text-gray-300 mb-8"
                 >
                   {stats.bio || "Full-Stack Developer focused on clarity, speed, and real-world impact."}
                 </motion.p>
@@ -142,7 +142,7 @@ export default function GitHubShowcasePage() {
                     href={`https://github.com/${username}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors font-inter"
+                    className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full hover:bg-gray-200 transition-colors font-inter"
                   >
                     <Github className="w-5 h-5" />
                     <span>View Profile</span>
@@ -152,12 +152,12 @@ export default function GitHubShowcasePage() {
             )}
           </motion.div>
 
-          {/* Right Column - Red/Orange Gradient */}
+          {/* Right Column - Dark Red/Orange Gradient */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative bg-gradient-to-br from-[#F26F56] to-[#E54C34] rounded-3xl shadow-xl p-8 md:p-12 flex flex-col justify-center"
+            className="relative bg-gradient-to-br from-[#2a1512] to-[#1a0a08] border border-[#F26F56]/30 rounded-3xl shadow-xl p-8 md:p-12 flex flex-col justify-center"
           >
             {stats && (
               <>
@@ -173,7 +173,7 @@ export default function GitHubShowcasePage() {
                       alt={stats.username}
                       width={200}
                       height={200}
-                      className="rounded-full border-4 border-white shadow-2xl"
+                      className="rounded-full border-4 border-[#F26F56]/50 shadow-2xl"
                     />
                   </div>
                 </motion.div>
@@ -181,7 +181,7 @@ export default function GitHubShowcasePage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="text-white/90 text-lg font-telma text-center mb-6"
+                  className="text-gray-300 text-lg font-telma text-center mb-6"
                 >
                   I&apos;m a developer and designer who enjoys solving problems with simple, thoughtful interfaces. I care about details, performance, and user experience.
                 </motion.p>
@@ -192,16 +192,16 @@ export default function GitHubShowcasePage() {
                   className="grid grid-cols-3 gap-4"
                 >
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-white">{stats.public_repos}</div>
-                    <div className="text-white/80 text-sm font-inter">Repositories</div>
+                    <div className="text-3xl font-bold text-[#F26F56]">{stats.public_repos}</div>
+                    <div className="text-gray-400 text-sm font-inter">Repositories</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-white">{stats.followers}</div>
-                    <div className="text-white/80 text-sm font-inter">Followers</div>
+                    <div className="text-3xl font-bold text-[#F26F56]">{stats.followers}</div>
+                    <div className="text-gray-400 text-sm font-inter">Followers</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-white">{stats.following}</div>
-                    <div className="text-white/80 text-sm font-inter">Following</div>
+                    <div className="text-3xl font-bold text-[#F26F56]">{stats.following}</div>
+                    <div className="text-gray-400 text-sm font-inter">Following</div>
                   </div>
                 </motion.div>
               </>
@@ -216,13 +216,13 @@ export default function GitHubShowcasePage() {
           transition={{ delay: 0.6 }}
           className="mb-16"
         >
-          <h3 className="text-4xl font-telma font-bold text-[#8B4513] mb-8 text-center">
+          <h3 className="text-4xl font-telma font-bold text-white mb-8 text-center">
             Contribution Activity
           </h3>
-          <div className="bg-white rounded-3xl shadow-xl p-6 overflow-hidden">
+          <div className="bg-[#1a1a1a] border border-white/10 rounded-3xl shadow-xl p-6 overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`https://github-readme-activity-graph.vercel.app/graph?username=${username}&theme=red-orange&hide_border=true&area=true&area_color=F26F56&bg_color=FFFFFF&color=8B4513&line=F26F56&point=E54C34&radius=8`}
+              src={`https://github-readme-activity-graph.vercel.app/graph?username=${username}&theme=react-dark&hide_border=true&area=true&area_color=F26F56&bg_color=1a1a1a&color=e5e5e5&line=F26F56&point=E54C34&radius=8`}
               alt="GitHub Contribution Graph"
               className="w-full h-auto rounded-2xl"
             />
@@ -236,53 +236,53 @@ export default function GitHubShowcasePage() {
           transition={{ delay: 0.7 }}
           className="mb-16"
         >
-          <h3 className="text-4xl font-telma font-bold text-[#8B4513] mb-8 text-center">
+          <h3 className="text-4xl font-telma font-bold text-white mb-8 text-center">
             GitHub Statistics
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Stats Graph Cards */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+            <div className="bg-[#1a1a1a] border border-white/10 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
               <div className="flex items-center justify-between mb-4">
-                <h4 className="text-lg font-inter font-semibold text-gray-700">Streak</h4>
+                <h4 className="text-lg font-inter font-semibold text-gray-200">Streak</h4>
                 <TrendingUp className="w-6 h-6 text-[#F26F56]" />
               </div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={`https://streak-stats.demolab.com/?user=${username}&theme=red-orange&hide_border=true&border_radius=10`}
+                src={`https://streak-stats.demolab.com/?user=${username}&theme=radical&hide_border=true&border_radius=10`}
                 alt="GitHub Streak"
                 className="w-full h-auto"
               />
             </div>
 
-            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+            <div className="bg-[#1a1a1a] border border-white/10 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
               <div className="flex items-center justify-between mb-4">
-                <h4 className="text-lg font-inter font-semibold text-gray-700">Stats</h4>
+                <h4 className="text-lg font-inter font-semibold text-gray-200">Stats</h4>
                 <Code className="w-6 h-6 text-[#F26F56]" />
               </div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={`https://github-readme-stats.vercel.app/api?username=${username}&theme=radical&hide_border=true&border_radius=10&bg_color=FFFFFF&title_color=8B4513&text_color=333&icon_color=F26F56`}
+                src={`https://github-readme-stats.vercel.app/api?username=${username}&theme=radical&hide_border=true&border_radius=10&bg_color=1a1a1a&title_color=F26F56&text_color=e5e5e5&icon_color=F26F56`}
                 alt="GitHub Stats"
                 className="w-full h-auto"
               />
             </div>
 
-            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+            <div className="bg-[#1a1a1a] border border-white/10 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
               <div className="flex items-center justify-between mb-4">
-                <h4 className="text-lg font-inter font-semibold text-gray-700">Top Languages</h4>
+                <h4 className="text-lg font-inter font-semibold text-gray-200">Top Languages</h4>
                 <Award className="w-6 h-6 text-[#F26F56]" />
               </div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&theme=radical&hide_border=true&border_radius=10&bg_color=FFFFFF&title_color=8B4513&text_color=333&layout=compact`}
+                src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&theme=radical&hide_border=true&border_radius=10&bg_color=1a1a1a&title_color=F26F56&text_color=e5e5e5&layout=compact`}
                 alt="Top Languages"
                 className="w-full h-auto"
               />
             </div>
 
-            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+            <div className="bg-[#1a1a1a] border border-white/10 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
               <div className="flex items-center justify-between mb-4">
-                <h4 className="text-lg font-inter font-semibold text-gray-700">Trophy</h4>
+                <h4 className="text-lg font-inter font-semibold text-gray-200">Trophy</h4>
                 <Award className="w-6 h-6 text-[#F26F56]" />
               </div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -302,7 +302,7 @@ export default function GitHubShowcasePage() {
           transition={{ delay: 0.8 }}
           className="mb-16"
         >
-          <h3 className="text-4xl font-telma font-bold text-[#8B4513] mb-8 text-center">
+          <h3 className="text-4xl font-telma font-bold text-white mb-8 text-center">
             Top Repositories
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -316,24 +316,24 @@ export default function GitHubShowcasePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9 + index * 0.1 }}
                 whileHover={{ scale: 1.02, y: -5 }}
-                className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 group"
+                className="bg-[#1a1a1a] border border-white/10 rounded-2xl shadow-lg p-6 hover:shadow-xl hover:border-[#F26F56]/30 transition-all duration-300 group"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <h4 className="text-xl font-inter font-bold text-gray-800 group-hover:text-[#F26F56] transition-colors">
+                  <h4 className="text-xl font-inter font-bold text-gray-100 group-hover:text-[#F26F56] transition-colors">
                     {repo.name}
                   </h4>
-                  <Github className="w-5 h-5 text-gray-400 group-hover:text-[#F26F56] transition-colors" />
+                  <Github className="w-5 h-5 text-gray-500 group-hover:text-[#F26F56] transition-colors" />
                 </div>
-                <p className="text-gray-600 text-sm font-inter mb-4 line-clamp-2">
+                <p className="text-gray-400 text-sm font-inter mb-4 line-clamp-2">
                   {repo.description || "No description available"}
                 </p>
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-1 text-gray-600">
+                    <div className="flex items-center gap-1 text-gray-400">
                       <Star className="w-4 h-4" />
                       <span>{repo.stargazers_count}</span>
                     </div>
-                    <div className="flex items-center gap-1 text-gray-600">
+                    <div className="flex items-center gap-1 text-gray-400">
                       <GitFork className="w-4 h-4" />
                       <span>{repo.forks_count}</span>
                     </div>
@@ -349,7 +349,7 @@ export default function GitHubShowcasePage() {
                     {repo.topics.slice(0, 3).map((topic) => (
                       <span
                         key={topic}
-                        className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full font-inter"
+                        className="px-2 py-1 bg-white/10 text-gray-400 text-xs rounded-full font-inter"
                       >
                         {topic}
                       </span>
@@ -368,30 +368,30 @@ export default function GitHubShowcasePage() {
           transition={{ delay: 1 }}
           className="mb-16"
         >
-          <h3 className="text-4xl font-telma font-bold text-[#8B4513] mb-8 text-center">
+          <h3 className="text-4xl font-telma font-bold text-white mb-8 text-center">
             Detailed Analytics
           </h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h4 className="text-xl font-inter font-semibold text-gray-700 mb-4 flex items-center gap-2">
+            <div className="bg-[#1a1a1a] border border-white/10 rounded-2xl shadow-lg p-6">
+              <h4 className="text-xl font-inter font-semibold text-gray-200 mb-4 flex items-center gap-2">
                 <Calendar className="w-6 h-6 text-[#F26F56]" />
                 Contribution Calendar
               </h4>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={`https://github-readme-activity-graph.vercel.app/graph?username=${username}&theme=red-orange&hide_border=true&area=true&area_color=F26F56&bg_color=FFFFFF&color=8B4513&line=F26F56&point=E54C34&custom_title=My%20Contribution%20Graph`}
+                src={`https://github-readme-activity-graph.vercel.app/graph?username=${username}&theme=react-dark&hide_border=true&area=true&area_color=F26F56&bg_color=1a1a1a&color=e5e5e5&line=F26F56&point=E54C34&custom_title=My%20Contribution%20Graph`}
                 alt="Contribution Calendar"
                 className="w-full h-auto rounded-xl"
               />
             </div>
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h4 className="text-xl font-inter font-semibold text-gray-700 mb-4 flex items-center gap-2">
+            <div className="bg-[#1a1a1a] border border-white/10 rounded-2xl shadow-lg p-6">
+              <h4 className="text-xl font-inter font-semibold text-gray-200 mb-4 flex items-center gap-2">
                 <Code className="w-6 h-6 text-[#F26F56]" />
                 Language Distribution
               </h4>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&theme=radical&hide_border=true&border_radius=10&bg_color=FFFFFF&title_color=8B4513&text_color=333&layout=donut`}
+                src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&theme=radical&hide_border=true&border_radius=10&bg_color=1a1a1a&title_color=F26F56&text_color=e5e5e5&layout=donut`}
                 alt="Language Distribution"
                 className="w-full h-auto rounded-xl"
               />
@@ -405,7 +405,7 @@ export default function GitHubShowcasePage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.1 }}
-        className="bg-gradient-to-r from-[#F26F56] to-[#E54C34] text-white py-8"
+        className="bg-[#0a0a0a] border-t border-white/10 text-gray-400 py-8"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="font-inter">
@@ -414,7 +414,7 @@ export default function GitHubShowcasePage() {
               href={`https://github.com/${username}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline hover:text-gray-200"
+              className="underline hover:text-[#F26F56] transition-colors"
             >
               {username}
             </a>

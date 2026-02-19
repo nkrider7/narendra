@@ -9,9 +9,9 @@ type VisibleImage = "both" | "left" | "right";
 
 function playFartSound() {
 	try {
-		const audio = new Audio("/fart.mp3");
+		const audio = new Audio("/pop.mp3");
 		audio.volume = 0.7;
-		audio.play().catch(() => {});
+		audio.play().catch(() => { });
 	} catch {
 		// ignore if audio fails (e.g. file missing or autoplay blocked)
 	}
@@ -41,11 +41,11 @@ export default function Intro() {
 				</motion.h1>
 
 				<motion.h1
-				
-				initial={{ opacity: 0, y: 20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ delay: 0.2, duration: 0.6 }}
-				className="text-black text-center font-telma font-light mb-4 text-2xl md:text-4xl">
+
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ delay: 0.2, duration: 0.6 }}
+					className="text-black text-center font-telma font-light mb-4 text-2xl md:text-4xl">
 					Full-Stack Developer
 				</motion.h1>
 
@@ -132,7 +132,7 @@ export default function Intro() {
 
 
 			<Image src="/arrow.gif" alt="narendra" width={100} height={100} className="absolute bottom-96 md:bottom-[26rem] mx-auto " />
-			<Image src="/center.png" alt="narendra" width={2000} height={2000} className="mx-auto   md:h-[40rem] w-fit mt-32 md:mt-20" />
+			<Image src="/avatar.webp" alt="narendra" width={2000} height={2000} className="mx-auto   md:h-[40rem] w-fit mt-24 md:mt-16" />
 		</div>
 	);
 }

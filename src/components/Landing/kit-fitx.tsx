@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function SoulArise() {
+export default function Kitfitx() {
   return (
     <section className="bg-black text-white px-4 md:px-10 py-10 font-sans">
       <div className="max-w-7xl mx-auto">
@@ -41,7 +41,7 @@ export default function SoulArise() {
           {/* Right Small Card */}
           <div className="bg-neutral-900 rounded-xl overflow-hidden w-full h-full">
             <Image
-              src="/cover.jpeg"
+              src="/cover.png"
               alt="Coin"
               width={1200}
               height={1200}

@@ -8,10 +8,12 @@ export default function Footer() {
 
 			<div className="container mx-auto px-4">
 				<div className="md:hidden grid grid-cols-2 mb-8">
+					<Link href="https://brooocode.netlify.app/">
 					<Image
 						src={"/logo.svg"}
 						width={200} height={200}
-						className="" alt="logo" />
+						className="cursor-pointer" alt="logo" />
+					</Link>
 					<div className="text-xl mt-4 ml-6 font-inter  font-bold">
 						Building Digital Agency
 						<address className="not-italic text-sm font-inter text-gray-400 space-y-1">
@@ -31,12 +33,12 @@ export default function Footer() {
 				<div className="grid grid-cols-2 md:grid-cols-3 gap-12">
 					{/* Left Column */}
 					<div className="space-y-4 font-inter">
-						<Link href="/our-work" className="block text-2xl font-medium hover:text-gray-300">
+						{/* <Link href="/our-work" className="block text-2xl font-medium hover:text-gray-300">
 							Our work
-						</Link>
-						<Link href="/expertise" className="block text-2xl font-medium hover:text-gray-300">
+						</Link> */}
+						{/* <Link href="/expertise" className="block text-2xl font-medium hover:text-gray-300">
 							Expertise
-						</Link>
+						</Link> */}
 						<Link href="/about" className="block text-2xl font-medium hover:text-gray-300">
 							About
 						</Link>
@@ -67,17 +69,19 @@ export default function Footer() {
 
 					</div>
 					<div className="hidden md:block">
+					<Link href="https://brooocode.netlify.app/">
 						<Image
 							src={"/logo.svg"}
 							width={200} height={200}
-							className="" alt="logo" />
+							className="cursor-pointer" alt="logo" />
+							</Link>
 						<div className="text-2xl font-guzan font-medium">
 							Building Digital Agency
 						</div>
 						<div className="text-2xl font-guzan font-medium">
-							Aligarh, UP, India  <span className="text-gray-400">202001</span>
+						 India  <span className="text-gray-400">202001</span>
 						</div>
-						<address className="not-italic font-inter text-gray-400 space-y-1">
+						<address className="not-italic font-inter font-semibold text-gray-400 space-y-1">
 							Dodhpur
 							<br />
 							Civil Line

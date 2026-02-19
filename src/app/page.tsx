@@ -11,9 +11,9 @@ export default function Home() {
     <div className="max-w-screen-5xl ">
       <Intro />
       <MotionHero />
-      <SoulArise />
       <MarqueeDemo />
       <TechStack />
+      <SoulArise />
       <Expand />
       <HeroSection />
       <Footer />
