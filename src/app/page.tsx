@@ -4,13 +4,20 @@ import HeroSection from "@/components/Landing/HeroZero";
 import Intro from "@/components/Landing/Intro";
 import { MarqueeDemo } from "@/components/Landing/Marque";
 import MotionHero from "@/components/Landing/MotionHero";
+import MotionSide from "@/components/Landing/Motionside";
+import MotionSide2 from "@/components/Landing/Motionside2";
+import ShortIntro from "@/components/Landing/ShortIntro";
 import SoulArise from "@/components/Landing/soul-arise";
 import TechStack from "@/components/Landing/TechStack";
 export default function Home() {
   return (
     <div className="max-w-screen-5xl ">
+  
+       <ShortIntro />
       <Intro />
       <MotionHero />
+      <MotionSide />
+      <MotionSide2 />
       <MarqueeDemo />
       <TechStack />
       <SoulArise />

@@ -1,24 +1,24 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+// import { useState } from "react";
 
-type VisibleImage = "both" | "left" | "right";
+// type VisibleImage = "both" | "left" | "right";
 
-function playFartSound() {
-	try {
-		const audio = new Audio("/pop.mp3");
-		audio.volume = 0.7;
-		audio.play().catch(() => { });
-	} catch {
-		// ignore if audio fails (e.g. file missing or autoplay blocked)
-	}
-}
+// function playFartSound() {
+// 	try {
+// 		const audio = new Audio("/pop.mp3");
+// 		audio.volume = 0.7;
+// 		audio.play().catch(() => { });
+// 	} catch {
+// 		// ignore if audio fails (e.g. file missing or autoplay blocked)
+// 	}
+// }
 
 export default function Intro() {
-	const [visible, setVisible] = useState<VisibleImage>("both");
+	// const [visible, setVisible] = useState<VisibleImage>("both");
 
 	return (
 		<div
@@ -30,14 +30,22 @@ export default function Intro() {
 				transition: "background-image 0.4s ease-in-out",
 			}}
 		>
-			<div className="z-40 w-full my-10 rounded-lg text-center">
+			<div className="z-40 w-full mt-20  my-10 rounded-lg text-center">
 				<motion.h1
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.2, duration: 0.6 }}
 					className="text-5xl max-w-2xl mx-auto  cursor-pointer md:text-6xl w-full font-telma flex text-center items-center font-bold text-black justify-center"
 				>
-					Hi, I’m Narendra Nishad.
+					ナレンドラ
+				</motion.h1>
+				<motion.h1
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ delay: 0.2, duration: 0.6 }}
+					className="text-5xl max-w-2xl mx-auto  cursor-pointer md:text-6xl w-full font-telma flex text-center items-center font-bold text-black justify-center"
+				>
+					ニシャド
 				</motion.h1>
 
 				<motion.h1
@@ -46,12 +54,12 @@ export default function Intro() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.2, duration: 0.6 }}
 					className="text-black text-center font-telma font-light mb-4 text-2xl md:text-4xl">
-					Full-Stack Developer
+					フルスタックデベロッパー
 				</motion.h1>
 
 				<Link href={'/contact'} className="text-white bg-black hover:bg-gray-800 transition-all duration-300 mt-10 font-inter font-bold px-4 py-2 rounded-full">
 
-					Hire Me
+					HIre Me
 
 				</Link>
 
@@ -59,7 +67,7 @@ export default function Intro() {
 
 
 			{/* Interactive images: desktop only — click one to hide it and show the other */}
-			<div className="hidden md:block absolute bottom-80 left-1/3 z-10 cursor-pointer select-none">
+			{/* <div className="hidden md:block absolute bottom-80 left-1/3 z-10 cursor-pointer select-none">
 				<AnimatePresence mode="wait">
 					{(visible === "both" || visible === "left") && (
 						<motion.div
@@ -92,9 +100,9 @@ export default function Intro() {
 						</motion.div>
 					)}
 				</AnimatePresence>
-			</div>
+			</div> */}
 
-			<div className="hidden md:block absolute bottom-80 right-1/3 z-10 cursor-pointer select-none">
+			{/* <div className="hidden md:block absolute bottom-80 right-1/3 z-10 cursor-pointer select-none">
 				<AnimatePresence mode="wait">
 					{(visible === "both" || visible === "right") && (
 						<motion.div
@@ -127,7 +135,7 @@ export default function Intro() {
 						</motion.div>
 					)}
 				</AnimatePresence>
-			</div>
+			</div> */}
 
 
 

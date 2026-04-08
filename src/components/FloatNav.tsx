@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { House, Newspaper } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Dispatch, SetStateAction, useState } from "react";
 
 const TOGGLE_CLASSES =
@@ -11,14 +12,16 @@ const TOGGLE_CLASSES =
 type ToggleOptionsType = "home" | "blogs";
 
 const FloatBar = () => {
-  const [selected, setSelected] = useState<ToggleOptionsType>("home");
+  const pathname = usePathname();
+  const selected: ToggleOptionsType = pathname.startsWith("/blogs")
+    ? "blogs"
+    : "home";
   const [hovered, setHovered] = useState<ToggleOptionsType | null>(null);
 
   return (
-    <div className="bottom-10 fixed z-50 bg-slate-100 rounded-full p-1 shadow-lg">
+    <div className="z-20  flex w-full justify-center py-4">
       <SliderToggle
         selected={selected}
-        setSelected={setSelected}
         setHovered={setHovered}
         hovered={hovered}
       />
@@ -28,24 +31,21 @@ const FloatBar = () => {
 
 const SliderToggle = ({
   selected,
-  setSelected,
   setHovered,
   hovered,
 }: {
   selected: ToggleOptionsType;
-  setSelected: Dispatch<SetStateAction<ToggleOptionsType>>;
   setHovered: Dispatch<SetStateAction<ToggleOptionsType | null>>;
   hovered: ToggleOptionsType | null;
 }) => {
   return (
-    <div className="relative flex w-fit items-center rounded-full gap-x-2 bg-gray-200 dark:bg-gray-700 shadow-md">
+    <div className="relative hidden md:flex w-fit border-4 border-[#f4f4f5] items-center rounded-full gap-x-2 bg-gray-200 dark:bg-gray-700 shadow-md">
       {/* Home Button */}
       <Link
         href="/"
         className={TOGGLE_CLASSES}
         onMouseEnter={() => setHovered("home")}
         onMouseLeave={() => setHovered(null)}
-        onClick={() => setSelected("home")}
       >
         <span className="relative z-10">
           <House size={18} />
@@ -58,7 +58,6 @@ const SliderToggle = ({
         className={TOGGLE_CLASSES}
         onMouseEnter={() => setHovered("blogs")}
         onMouseLeave={() => setHovered(null)}
-        onClick={() => setSelected("blogs")}
       >
         <span className="relative z-10">
           <Newspaper size={18} />
@@ -76,7 +75,7 @@ const SliderToggle = ({
           transition={{ type: "spring", damping: 15, stiffness: 250 }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.9 }}
-          className="h-full w-1/2 rounded-full bg-[#CA160B] shadow-md"
+          className="h-full w-1/2 rounded-full bg-[#c73621] shadow-md"
         />
       </div>
     </div>

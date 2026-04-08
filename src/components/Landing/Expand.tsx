@@ -7,16 +7,6 @@ export default function Expand() {
 
   const sections = [
     {
-      id: "experience",
-      title: "Experience",
-      component: <ExperienceTimeline />
-    },
-    {
-      id: "projects",
-      title: "Projects",
-      component: <ProjectsGrid />
-    },
-    {
       id: "github",
       title: "Open Source",
       component: <GitHubStats />
@@ -70,117 +60,6 @@ export default function Expand() {
 }
 
 
-// Experience Timeline Component
-function ExperienceTimeline() {
-  const experiences = [
-     {
-      company: "Boomzo",
-      role: "Full-Stack Developer",
-      period: "2024 - Present",
-      description: "Frontend Developer who transitioned to React Native at Boomzo, spearheading the development of their first mobile applications. Continuously expanding my skillset to include Next.js for comprehensive full-stack capabilities"
-    },
-    {
-      company: "DevXquad",
-      role: "Frontend Developer",
-      period: "2024 - 2024",
-      description: "At DevXquad, I work as a Full Stack Developer contributing to innovative web-based solutions for startups and client businesses. My role involves end-to-end development using modern JavaScript technologies, with a focus on scalable, maintainable, and high-performance applications."
-    }
-   
-  ];
-
-  return (
-    <div className="space-y-6">
-      {experiences.map((exp, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: index * 0.2 }}
-          className="flex gap-4 relative"
-        >
-          {/* Timeline Line */}
-          <div className="flex flex-col items-center">
-            <div className="w-4 h-4 rounded-full bg-black border-4 border-white shadow-lg" />
-            {index < experiences.length - 1 && (
-              <div className="w-0.5 h-full bg-gray-300 mt-2" />
-            )}
-          </div>
-
-          {/* Content */}
-          <div className="flex-1 pb-8">
-            <div className="bg-gray-50 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-              <h3 className="font-bold font-guzan text-xl">{exp.role}</h3>
-              <p className="text-base text-gray-600 font-semibold">{exp.company}</p>
-              <p className="text-xs text-gray-500 mt-1">{exp.period}</p>
-              <p className="text-sm font-inter text-gray-900 mt-2">{exp.description}</p>
-            </div>
-          </div>
-        </motion.div>
-      ))}
-    </div>
-  );
-}
-
-// Projects Grid Component
-function ProjectsGrid() {
-  const projects = [
-     {
-      title: "SOUL ARISE App",
-      description: "Self-improvement mobile app with habit tracking",
-      tech: ["React Native", "Expo", "MongoDB"],
-      status: "In Progress"
-    },
-    {
-      title: "MediHelp Global",
-      description: "Healthcare platform built with Next.js focusing on accessibility",
-      tech: ["Next.js", "Tailwind", "Accessibility"],
-      status: "Live"
-    },
-    {
-      title: "Petopia Platform",
-      description: "Full-stack shopping experience with payment integration",
-      tech: ["MERN", "Stripe", "Redux"],
-      status: "Live"
-    },
-    {
-      title: "DigitalKosh ",
-      description: "Full-stack shopping experience with payment integration",
-      tech: ["MERN", "Stripe", "Redux"],
-      status: "Live"
-    }
-  ];
-
-  return (
-    <div className="grid md:grid-cols-2 gap-4">
-      {projects.map((project, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: index * 0.1 }}
-          className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-5 shadow-md hover:shadow-xl transition-all border-2 border-transparent hover:border-black"
-        >
-          <div className="flex justify-between items-start mb-3">
-            <h3 className="font-bold font-inter text-lg">{project.title}</h3>
-            <span className={`text-xs px-2 py-1 rounded-full ${
-              project.status === "Live" ? "bg-green-200 text-green-800" : "bg-yellow-200 text-yellow-800"
-            }`}>
-              {project.status}
-            </span>
-          </div>
-          <p className="text-sm text-gray-600 mb-3">{project.description}</p>
-          <div className="flex flex-wrap gap-2">
-            {project.tech.map((tech) => (
-              <span key={tech} className="text-xs bg-white px-2 py-1 rounded-md border border-gray-300">
-                {tech}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-      ))}
-    </div>
-  );
-}
 
 // GitHub Stats Component
 function GitHubStats() {
