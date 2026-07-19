@@ -1,122 +1,147 @@
-import Link from "next/link"
-import { Github, Instagram, Linkedin } from "lucide-react"
-import Image from "next/image"
+import Link from "next/link";
+import { Github, Instagram, Linkedin } from "lucide-react";
+import Image from "next/image";
+
+const PAGE_LINKS = [
+	{ label: "About", href: "/about" },
+	{ label: "Whoami", href: "/whoami" },
+	{ label: "Blogs", href: "/blogs" },
+	{ label: "Contact", href: "/contact" },
+] as const;
+
+const SERVICE_LINKS = [
+	{ label: "Web Development", href: "/contact" },
+	{ label: "Mobile App Development", href: "/contact" },
+	{ label: "Desktop App Development", href: "/contact" },
+] as const;
+
+const SOCIAL_LINKS = [
+	{
+		label: "LinkedIn",
+		href: "https://www.linkedin.com/in/narendra-nishad/",
+		icon: Linkedin,
+	},
+	{
+		label: "Instagram",
+		href: "https://www.instagram.com/nkriderking/",
+		icon: Instagram,
+	},
+	{
+		label: "GitHub",
+		href: "https://github.com/nkrider7",
+		icon: Github,
+	},
+] as const;
+
+function FooterLinkGroup({
+	title,
+	links,
+}: {
+	title: string;
+	links: readonly { label: string; href: string }[];
+}) {
+	return (
+		<div>
+			<p className="mb-4 font-inter text-[11px] font-semibold uppercase tracking-[0.2em] text-white/40">
+				{title}
+			</p>
+			<ul className="space-y-2.5">
+				{links.map((link) => (
+					<li key={link.href}>
+						<Link
+							href={link.href}
+							className="font-inter text-sm text-white/70 transition-colors hover:text-white sm:text-[15px]"
+						>
+							{link.label}
+						</Link>
+					</li>
+				))}
+			</ul>
+		</div>
+	);
+}
 
 export default function Footer() {
 	return (
-		<footer className="bg-[#111111] text-white py-16">
-
-			<div className="container mx-auto px-4">
-				<div className="md:hidden grid grid-cols-2 mb-8">
-					<Link href="https://brooocode.netlify.app/">
-					<Image
-						src={"/logo.svg"}
-						width={200} height={200}
-						className="cursor-pointer" alt="logo" />
-					</Link>
-					<div className="text-xl mt-4 ml-6 font-inter  font-bold">
-						Building Digital Agency
-						<address className="not-italic text-sm font-inter text-gray-400 space-y-1">
-							Dodhpurs
-							<br />
-							Civil Line
-							<br />
-							Aligarh
-							<br />
-							+91 987654321
-						</address>
-					</div>
-
-
-				</div>
-
-				<div className="grid grid-cols-2 md:grid-cols-3 gap-12">
-					{/* Left Column */}
-					<div className="space-y-4 font-inter">
-						{/* <Link href="/our-work" className="block text-2xl font-medium hover:text-gray-300">
-							Our work
-						</Link> */}
-						{/* <Link href="/expertise" className="block text-2xl font-medium hover:text-gray-300">
-							Expertise
-						</Link> */}
-						<Link href="/about" className="block text-2xl font-medium hover:text-gray-300">
-							About
+		<footer className="relative overflow-hidden bg-[#0a0a0a] text-white">
+			<div className="relative mx-auto max-w-6xl px-5 sm:px-8">
+				<div className="grid gap-10 border-b border-white/10 py-10 sm:gap-12 sm:py-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8 lg:py-14">
+					<div className="md:col-span-2 lg:col-span-4">
+						<Link
+							href="https://brooocode.netlify.app/"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="inline-block"
+						>
+							<Image
+								src="/logo.svg"
+								width={160}
+								height={48}
+								alt="BrooCode logo"
+								className="h-10 w-auto object-contain sm:h-11"
+							/>
 						</Link>
-						<Link href="/blog" className="block text-2xl font-medium hover:text-gray-300">
-							Blog
-						</Link>
-						<Link href="/contact" className="block text-2xl font-medium hover:text-gray-300">
-							Contact
-						</Link>
-						
-					</div>
-
-					{/* Middle Column */}
-					<div className="flex justify-between  w-full">
-						<div className="space-y-4 font-inter font-semibold mr-10">
-							<Link href="/strategy" className="block text-xl  text-gray-400 hover:text-gray-300">
-								Strategy
-							</Link>
-							<Link href="/creative" className="block text-xl text-gray-400 hover:text-gray-300">
-								Creative
-							</Link>
-							<Link href="/technology" className="block text-xl text-gray-400 hover:text-gray-300">
-								Technology
-							</Link>
-						</div>
-
-
-
-					</div>
-					<div className="hidden md:block">
-					<Link href="https://brooocode.netlify.app/">
-						<Image
-							src={"/logo.svg"}
-							width={200} height={200}
-							className="cursor-pointer" alt="logo" />
-							</Link>
-						<div className="text-2xl font-guzan font-medium">
+						<p className="mt-4 font-guzan text-lg font-medium leading-snug text-white sm:text-xl">
 							Building Digital Agency
-						</div>
-						<div className="text-2xl font-guzan font-medium">
-						 India  <span className="text-gray-400">202001</span>
-						</div>
-						<address className="not-italic font-inter font-semibold text-gray-400 space-y-1">
-							Dodhpur
-							<br />
-							Civil Line
-							<br />
-							Aligarh
-							<br />
-							+91987654321
+						</p>
+						<p className="mt-1 font-inter text-sm text-white/50">
+							India{" "}
+							<span className="text-white/35">202001</span>
+						</p>
+					</div>
+
+					<div className="grid grid-cols-2 gap-8 sm:gap-10 md:col-span-2 lg:col-span-4">
+						<FooterLinkGroup title="Pages" links={PAGE_LINKS} />
+						<FooterLinkGroup title="Services" links={SERVICE_LINKS} />
+					</div>
+
+					<div className="md:col-span-2 lg:col-span-4 lg:text-right">
+						<p className="mb-4 font-inter text-[11px] font-semibold uppercase tracking-[0.2em] text-white/40">
+							Get in touch
+						</p>
+						<address className="space-y-1 font-inter text-sm not-italic leading-relaxed text-white/60 sm:text-[15px]">
+							<span className="block">Dodhpur</span>
+							<span className="block">Civil Line, Aligarh</span>
+							<a
+								href="tel:+919876543210"
+								className="mt-2 inline-block text-white/80 transition-colors hover:text-white"
+							>
+								+91 98765 43210
+							</a>
 						</address>
 					</div>
 				</div>
 
-				{/* Bottom Bar */}
-				<div className="mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-					<div className="flex flex-wrap gap-6 text-sm text-gray-400">
-				
-						<span>© 2025 Ask BrooCode. All rights reserved.</span>
-					</div>
+				<div className="relative py-8 sm:py-10">
+					<p
+						className="pointer-events-none select-none text-center font-inter text-[clamp(2.5rem,11vw,6.5rem)] font-bold uppercase leading-[0.9] tracking-tight text-white/[0.06]"
+						aria-hidden
+					>
+						Open to work
+					</p>
+				</div>
 
-					<div className="flex gap-6">
-						<Link href="https://linkedin.com" className="text-gray-400 hover:text-white">
-							<Linkedin className="w-6 h-6" />
-							<span className="sr-only">LinkedIn</span>
-						</Link>
-						<Link href="https://instagram.com" className="text-gray-400 hover:text-white">
-							<Instagram className="w-6 h-6" />
-							<span className="sr-only">Instagram</span>
-						</Link>
-						<Link href="https://github.com" className="text-gray-400 hover:text-white">
-							<Github className="w-6 h-6" />
-							<span className="sr-only">GitHub</span>
-						</Link>
+				<div className="flex flex-col gap-5 border-t border-white/10 py-6 sm:flex-row sm:items-center sm:justify-between">
+					<p className="font-inter text-xs text-white/40 sm:text-sm">
+						© {new Date().getFullYear()} Ask BrooCode. All rights reserved.
+					</p>
+
+					<div className="flex items-center gap-3">
+						{SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
+							<Link
+								key={label}
+								href={href}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={label}
+								className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/50 transition-colors hover:border-white/25 hover:bg-white/5 hover:text-white"
+							>
+								<Icon className="h-4 w-4" />
+							</Link>
+						))}
 					</div>
 				</div>
 			</div>
 		</footer>
-	)
+	);
 }
-

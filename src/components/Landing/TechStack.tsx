@@ -70,7 +70,7 @@ export default function TechStack() {
 	const [isOpen, setIsOpen] = useState(false)
 
 	return (
-		<div className='min-h-[50vh] flex flex-col justify-center items-center text-white px-4 md:px-10 pt-10 font-sans relative'>
+		<div className='min-h-fit flex flex-col justify-center items-center text-white px-4 md:px-10 pt-10 font-sans relative'>
 			<h1 className="font-inter uppercase text-black text-center text-3xl mt-8" style={{ fontWeight: "200" }}>
 				Our<span style={{ fontWeight: '800' }}>Technologies Stack</span>
 			</h1>

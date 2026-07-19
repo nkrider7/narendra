@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function SoulArise() {
   return (
-    <section className="bg-black text-white px-4 md:px-10 py-10 font-sans">
+    <section className="bg-black text-white px-4 md:px-8 py-10 font-sans">
       <div className="max-w-7xl mx-auto">
         {/* Top Title Row */}
         <div className="flex justify-between items-center mb-6">
@@ -19,19 +19,19 @@ export default function SoulArise() {
         </div>
 
         {/* Hero Section */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-4 gap-6">
           {/* Left Large Card */}
 
-          <Link href="https://soularise.netlify.app/" className="md:col-span-2 bg-white rounded-xl overflow-hidden relative p-4 flex flex-col md:flex-row justify-center">
+          <Link href="https://soularise.netlify.app/" className="md:col-span-2 bg-white rounded-xl overflow-hidden relative p-4 flex flex-col md:flex-row justify-center ">
             <Image
               src="/soul.webp"
               alt="Phone Mockup"
               width={400}
               height={100}
-              className="rounded-2xl object-cover md:w-[70%] mx-auto "
+              className="rounded-2xl object-cover md:w-[60%] mx-auto "
             />
-            <h1 className="text-4xl md:text-5xl font-guzan text-black  md:w-[30%] text-center md:text-start md:px-4 ">
-              Gamify Your <span className="text-[#413BFF]">Growth</span>, Level Up Your <span className="text-[#4611FD]">Soul</span>
+            <h1 className="text-4xl md:text-5xl font-guzan text-black  md:w-[40%] text-center md:text-start md:px-4 ">
+              Gamify Your <span className="text-[#fd2841]">Growth</span>, Level Up Your <span className="text-[#4611FD]">Soul</span>
               {/* Seamlessly{" "} */}
               {/* <span className="text-blue-400">Schedule</span> and Monitor{" "}
               <span className="text-blue-400">Projects</span> */}
@@ -39,13 +39,16 @@ export default function SoulArise() {
           </Link>
 
           {/* Right Small Card */}
-          <div className="bg-neutral-900 rounded-xl overflow-hidden w-full h-full">
-            <Image
-              src="/cover.jpeg"
-              alt="Coin"
-              width={1200}
-              height={1200}
-              className="w-full h-full hover:scale-125 transition-transform duration-300 object-cover"
+          <div className="group relative min-h-[240px] md:col-span-2 overflow-hidden rounded-xl bg-neutral-900 md:min-h-full">
+            <video
+              src="/loop.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              disablePictureInPicture
+              className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+              aria-label="Soul Arise app preview"
             />
           </div>
 

@@ -37,22 +37,28 @@ const reviews = [
     img: "/vani.png",
   },
   {
-    name: "Boomzo",
-    link: "ttps://broocode.netlify.app/",
+    name: "https://nkrider7.github.io/fishman-web/",
+    link: "https://nkrider7.github.io/fishman-web/",
     body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://cdn.dribbble.com/userupload/29026275/file/original-2f05f474069c58aebc4b09a092b1217e.png?resize=1024x768&vertical=center",
+    img: "/fishmanmock.png",
   },
   {
     name: "BrooCode",
-    link: "https://broocode.netlify.app/",
+    link: "https://broocode.vercel.app/",
     body: "I'm at a loss for words. This is amazing. I love it.",
     img: "/broocode.png",
   },
   {
     name: "Portfolio",
-    link: "/",
+    link: "https://cybergenerator.netlify.app/",
     body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://cdn.dribbble.com/userupload/23531650/file/original-1075a0a98953616197ca3853a27fa1e2.jpg?resize=752x564&vertical=center",
+    img: "/cybergen.png",
+  },
+  {
+    name: "Petopia",
+    link: "https://pals-petopia.netlify.app/",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "/patopia.png",
   },
 ].map((r, i) => ({ ...r, gradient: GRADIENTS[i % GRADIENTS.length] }));
 

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono,  Poppins } from "next/font/google";
+import { Funnel_Sans, Geist, Geist_Mono,  Poppins } from "next/font/google";
 import localFont from 'next/font/local'
 import "./globals.css";
 import LoadingWrapper from "@/components/LoadingWrapper";
@@ -45,6 +45,10 @@ const guzan = localFont({
   ],
   variable: '--font-guzan',
 })
+const funnelSans = Funnel_Sans({
+  variable: "--font-funnel-sans",
+  subsets: ["latin"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -75,9 +79,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${telma.variable} ${sink.variable} ${guzan.variable} ${inter.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${telma.variable} ${sink.variable} ${guzan.variable} ${inter.variable} ${funnelSans.variable} antialiased`}
       >
-        <LoadingWrapper>{children}</LoadingWrapper>
+        <LoadingWrapper>
+         
+          {children}
+        </LoadingWrapper>
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const DEVELOPER_QUOTES = [
@@ -46,7 +47,7 @@ interface LoadingScreenProps {
 
 export default function LoadingScreen({
   onComplete,
-  minDuration = 3200,
+  minDuration = 200,
 }: LoadingScreenProps) {
   const [isVisible, setIsVisible] = useState(true);
   const [quoteIndex, setQuoteIndex] = useState(0);
@@ -92,9 +93,12 @@ export default function LoadingScreen({
           }}
           transition={{ duration: 0.3 }}
         >
+          <Image src="https://media.tenor.com/kGe0A0NBA8kAAAAj/one-piece-pixel.gif" alt="Narendra" width={1000} height={1000} className="w-24 h-24" />
           {/* Animated loading word */}
           <div className="mb-6 flex justify-center overflow-hidden">
             <AnimatePresence mode="wait">
+
+              
               <motion.div
                 key={wordIndex}
                 className="flex font-telma text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl"
@@ -146,7 +150,7 @@ export default function LoadingScreen({
             transition={{ duration: 0.4 }}
             className="max-w-xl text-center font-inter text-sm font-light italic leading-relaxed text-white/70 sm:text-base"
           >
-            "{DEVELOPER_QUOTES[quoteIndex]}"
+            &quot;{DEVELOPER_QUOTES[quoteIndex]}&quot;
           </motion.blockquote>
 
           {/* Subtitle */}

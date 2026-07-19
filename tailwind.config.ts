@@ -83,6 +83,11 @@ export default {
 				'var(--font-telma)',
 				'system-ui',
 				'sans-serif'
+			],
+			funnelSans: [
+				'var(--font-funnel-sans)',
+				'system-ui',
+				'sans-serif'
 			]
   		},
   		keyframes: {
