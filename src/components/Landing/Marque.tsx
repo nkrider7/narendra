@@ -116,7 +116,7 @@ export function MarqueeDemo() {
 
   return (
     <>
-      <div className="relative flex w-full flex-col items-center mt-10 justify-center overflow-hidden">
+      <div id="work" className="relative mt-10 flex w-full flex-col items-center justify-center overflow-hidden">
         <h1
           className="font-inter uppercase text-3xl mb-8"
           style={{ fontWeight: "200" }}

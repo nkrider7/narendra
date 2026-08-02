@@ -79,6 +79,11 @@ export default {
   				'system-ui',
   				'sans-serif'
   			],
+			bilderberg: [
+				'var(--font-bilderberg)',
+				'system-ui',
+				'sans-serif'
+			],
 			telma: [
 				'var(--font-telma)',
 				'system-ui',

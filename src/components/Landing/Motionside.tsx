@@ -52,7 +52,7 @@ export default function MotionSide() {
             <div className="max-w-[720px] w-full text-center space-y-6  px-8 py-12">
 
               {/* Heading */}
-              <h1 className="text-4xl md:text-7xl leading-[1.1] font-bold font-telma text-[#1a1a1a]">
+              <h1 className="text-6xl md:text-8xl leading-[1.1] font-bold font-bilderberg text-[#1a1a1a]">
                 Take Control of Your{" "}
                 <span className="text-[#f81937] relative">
                   Menstrual

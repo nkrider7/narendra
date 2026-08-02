@@ -49,7 +49,7 @@ export default function MotionSide2() {
                   className="rounded-lg"
                 />
               </div>
-              <h1 className="text-4xl md:text-7xl leading-[1.1] font-bold font-telma text-white">
+              <h1 className="text-4xl md:text-8xl leading-[1.1] font-bold font-bilderberg text-white">
                 Level Up Your{" "}
                 <span className="text-[#a02add] relative">
                   Reality

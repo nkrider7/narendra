@@ -30,40 +30,51 @@ export default function Intro() {
 				transition: "background-image 0.4s ease-in-out",
 			}}
 		>
-			<div className="z-40 w-full mt-20  my-10 rounded-lg text-center">
+			<div className="z-10 w-full mt-20    my-10 rounded-lg text-center">
 				<motion.h1
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.2, duration: 0.6 }}
-					className="text-5xl max-w-2xl mx-auto  cursor-pointer md:text-6xl w-full font-telma flex text-center items-center font-bold text-black justify-center"
+					className="text-7xl max-w-2xl mx-auto  cursor-pointer md:text-9xl w-full  flex text-center items-center font-bilderberg text-black justify-center"
+					style={{
+						WebkitTextStroke: "2px black",
+					}}
 				>
-					ナレンドラ
+					Hi, I'm Narendra
 				</motion.h1>
 				<motion.h1
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.2, duration: 0.6 }}
-					className="text-5xl max-w-2xl mx-auto  cursor-pointer md:text-6xl w-full font-telma flex text-center items-center font-bold text-black justify-center"
+					className="text-7xl max-w-2xl mx-auto  cursor-pointer md:text-9xl w-full font-bilderberg flex text-center flex-col items-center font-bold  justify-center"
+					style={{
+						WebkitTextStroke: "2px black",
+					}}
 				>
-					ニシャド
+					<span style={{
+						WebkitTextStroke: "2px #de4735",
+					}} className="text-[#de4735] md:text-[9rem]">Full-Stack </span>Developer
 				</motion.h1>
 
-				<motion.h1
+				{/* <motion.h1
 
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.2, duration: 0.6 }}
+					style={{
+						WebkitTextStroke: "4px black",
+					}}
 					className="text-black text-center font-telma font-light mb-4 text-2xl md:text-4xl">
 					フルスタックデベロッパー
-				</motion.h1>
+				</motion.h1> */}
 
-				<Link href={'/contact'} className="text-white bg-black hover:bg-gray-800 transition-all duration-300 mt-10 font-inter font-bold px-4 py-2 rounded-full">
-
-					HIre Me
-
-				</Link>
 
 			</div>
+			<Link href={'/contact'} className="text-white bg-black hover:bg-gray-800 transition-all duration-300 mt-10 z-50 font-bilderberg text-2xl absolute bottom-10 font-bold px-8 py-4 rounded-full">
+
+				HIre Me
+
+			</Link>
 
 
 			{/* Interactive images: desktop only — click one to hide it and show the other */}
@@ -139,8 +150,8 @@ export default function Intro() {
 
 
 
-			<Image src="/arrow.gif" alt="narendra" width={100} height={100} className="absolute bottom-96 md:bottom-[26rem] mx-auto " />
-			<Image src="/avatar.webp" alt="narendra" width={2000} height={2000} className="mx-auto   md:h-[40rem] w-fit mt-24 md:mt-16" />
+
+			<Image src="/avatar.webp" alt="narendra" width={2000} height={2000} className="mx-auto absolute bottom-0 z-20  md:h-[40rem] w-fit mt-24 md:mt-16" />
 		</div>
 	);
 }

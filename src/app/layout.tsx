@@ -7,15 +7,29 @@ import LoadingWrapper from "@/components/LoadingWrapper";
 const sink = localFont({
   src: [
     {
-      path: '../../public/fonts/Worktalk.otf',
+      path: '../../public/fonts/sink.otf',
       weight: '400'
     },
     {
-      path: '../../public/fonts/Worktalk.otf',
+      path: '../../public/fonts/sink.otf',
       weight: '700'
     }
   ],
   variable: '--font-sink',
+})
+
+const bilderberg = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Bilderberg.otf',
+      weight: '400'
+    },
+    {
+      path: '../../public/fonts/Bilderberg.otf',
+      weight: '700'
+    }
+  ],
+  variable: '--font-bilderberg',
 })
 
 const telma = localFont({
@@ -79,7 +93,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${telma.variable} ${sink.variable} ${guzan.variable} ${inter.variable} ${funnelSans.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${telma.variable} ${sink.variable} ${guzan.variable} ${inter.variable} ${funnelSans.variable} ${bilderberg.variable} antialiased`}
       >
         <LoadingWrapper>
          

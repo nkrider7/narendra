@@ -44,6 +44,7 @@ export default function Hero() {
 					<h1 className="pointer-events-none absolute inset-x-0 top-1/3 z-0 -translate-y-[58%] select-none text-center font-inter text-[4.2rem] font-bold leading-[0.9] tracking-tighter text-white sm:text-6xl md:text-[14rem] uppercase "
 						style={{
 							textShadow: "0 0 10px rgba(0,0,0,0.5)",
+							WebkitTextStroke: "2px white",
 						}}
 					>
 						Software
@@ -107,7 +108,11 @@ export default function Hero() {
 						</button>
 
 					</Link>
-					<p className=" absolute -bottom-10 md:-bottom-10 left-1/2 -translate-x-1/2  text-center font-telma  text-white font-bold text-sm md:text-lg">I&apos;m going to be the World&apos;s Best Developer! </p>
+					<p className=" absolute -bottom-10 md:-bottom-10 left-1/2 -translate-x-1/2  text-center font-telma  text-white font-bold text-sm md:text-2xl" 
+					style={{
+						textShadow: "0 0 10px #398cd6",
+					}}
+					>I&apos;m going to be the World&apos;s Best Developer! </p>
 
 
 					{/* <div className="card hero-card absolute -bottom-20 right-0 z-20 hidden md:block lg:right-">

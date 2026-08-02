@@ -3,6 +3,7 @@ import Intro from "@/components/Landing/Intro";
 import MotionHero from "@/components/Landing/MotionHero";
 import MotionSide from "@/components/Landing/Motionside";
 import MotionSide2 from "@/components/Landing/Motionside2";
+import OnePiecePosterScroller from "@/components/Landing/OnePiecePosterScroller";
 import Navbar from "@/components/Navbar";
 
 export default function WhoamiPage() {
@@ -15,6 +16,7 @@ export default function WhoamiPage() {
       <MotionHero />
       <MotionSide />
       <MotionSide2 />
+      <OnePiecePosterScroller />
       <Footer />
     </div>
   );
