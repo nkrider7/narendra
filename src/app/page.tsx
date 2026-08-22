@@ -11,7 +11,7 @@ import ShortIntro from "@/components/Landing/ShortIntro";
 import SoulArise from "@/components/Landing/soul-arise";
 import TechStack from "@/components/Landing/TechStack";
 import Navbar from "@/components/Navbar";
-import Image from "next/image";
+
 
 export default function Home() {
   return (

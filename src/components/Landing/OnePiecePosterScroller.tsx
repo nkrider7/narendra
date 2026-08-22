@@ -19,28 +19,42 @@ const PANEL_COUNT = POSTER_PANELS.length;
 /** Intrinsic size of each panel (all are square 1170×1170) */
 const PANEL_SIZE = 1170;
 
-/** Foreground: big text → clipped PNG → text → image… (swap assets later) */
+/** Four-pointed sparkle — the AI star used between oversized type */
+function FourStarIcon({ className }: { className?: string }) {
+	return (
+		<svg
+			viewBox="0 0 64 64"
+			fill="currentColor"
+			aria-hidden
+			className={className}
+		>
+			<path d="M32 2C32 2 34.8 22.4 43.2 32C34.8 41.6 32 62 32 62C32 62 29.2 41.6 20.8 32C29.2 22.4 32 2 32 2Z" />
+			<path d="M2 32C2 32 22.4 29.2 32 20.8C41.6 29.2 62 32 62 32C62 32 41.6 34.8 32 43.2C22.4 34.8 2 32 2 32Z" />
+		</svg>
+	);
+}
+
+/** Foreground: big text → four-star AI icon → text → icon… */
 const FOREGROUND_STRIP: Array<
 	| { type: "text"; label: string }
-	| { type: "image"; src: string; alt: string }
+	| { type: "icon" }
 > = [
 	{ type: "text", label: "SET SAIL" },
-	
+	{ type: "icon" },
 	{ type: "text", label: "GRAND LINE" },
-	{ type: "image", src: "/zoro.png", alt: "Zoro" },
+	{ type: "icon" },
 	{ type: "text", label: "CREW UP" },
-	{ type: "image", src: "/nikorobin.png", alt: "Nico Robin" },
+	{ type: "icon" },
 	{ type: "text", label: "ONE PIECE" },
-	{ type: "image", src: "/luffychibi.png", alt: "Luffy chibi" },
+	{ type: "icon" },
 	{ type: "text", label: "NEW WORLD" },
-	{ type: "image", src: "/vani.png", alt: "Character" },
 ];
 
 /**
  * Full-bleed sticky horizontal scroller.
  * Vertical page scroll drives left → right pan.
  * Background: continuous poster panels.
- * Foreground: oversized type + top-clipped PNGs in an alternating strip.
+ * Foreground: oversized type + four-star AI icons in an alternating strip.
  */
 export default function OnePiecePosterScroller() {
 	const reduce = useReducedMotion();
@@ -57,7 +71,7 @@ export default function OnePiecePosterScroller() {
 		["0%", reduce ? "0%" : `-${((PANEL_COUNT - 1) / PANEL_COUNT) * 100}%`],
 	);
 
-	/** Foreground travels a bit farther so type + images feel lively over the poster */
+	/** Foreground travels a bit farther so type + icons feel lively over the poster */
 	const fgX = useTransform(
 		scrollYProgress,
 		[0, 1],
@@ -86,7 +100,7 @@ export default function OnePiecePosterScroller() {
 					className="flex h-full shrink-0 items-center px-6 sm:px-10 md:px-16"
 				>
 					<p
-						className="select-none whitespace-nowrap font-inter text-[clamp(4.5rem,18vw,14rem)] font-black uppercase leading-[0.82] tracking-tighter text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.55)]"
+						className="select-none whitespace-nowrap font-inter text-[clamp(1.75rem,6vw,4.5rem)] font-black uppercase leading-[0.82] tracking-tighter text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.55)]"
 						aria-hidden={index > 0}
 					>
 						{item.label}
@@ -97,24 +111,10 @@ export default function OnePiecePosterScroller() {
 
 		return (
 			<div
-				key={`img-${item.src}-${index}`}
-				className="relative flex h-full shrink-0 items-end px-2 sm:px-4"
+				key={`icon-${index}`}
+				className="flex h-full shrink-0 items-center px-4 sm:px-8 md:px-10"
 			>
-				{/* Top clip: crop the upper edge so the PNG reads as a grounded silhouette */}
-				<div
-					className="relative h-[78svh] w-[min(52vw,420px)] overflow-hidden sm:w-[min(48vw,480px)] md:w-[min(42vw,560px)]"
-					style={{ clipPath: "inset(12% 0 0 0)" }}
-				>
-					<Image
-						src={item.src}
-						alt={item.alt}
-						fill
-						sizes="(max-width: 768px) 52vw, 42vw"
-						draggable={false}
-						className="pointer-events-none select-none object-contain object-bottom"
-						priority={index < 3}
-					/>
-				</div>
+				<FourStarIcon className="size-[clamp(1.25rem,4vw,2.75rem)] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.55)]" />
 			</div>
 		);
 	});
@@ -153,7 +153,7 @@ export default function OnePiecePosterScroller() {
 					aria-hidden
 				/>
 
-				{/* Foreground: text → clipped png → text → image… driven by same scroll */}
+				{/* Foreground: text → four-star AI icon → text… driven by same scroll */}
 				<motion.div
 					style={{ x: fgX }}
 					className="pointer-events-none absolute inset-y-0 left-0 z-10 flex h-full w-max flex-row will-change-transform"
