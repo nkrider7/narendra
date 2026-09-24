@@ -127,18 +127,6 @@ export const CHIBI_CREW: ChibiSlide[] = [
 		mark: "OP",
 	},
 	{
-		id: "hancock",
-		name: "HANCOCK",
-		image: "/chibi/hancock.png",
-		bgColor: "#BE185D",
-		textColor: "#FCE7F3",
-		topLabel: "EMPRESS",
-		bottomLeft: "KUJA",
-		bottomRight: "MERO",
-		badge: "H",
-		mark: "OP",
-	},
-	{
 		id: "yamato",
 		name: "YAMATO",
 		image: "/chibi/yamoto.png",
@@ -150,12 +138,24 @@ export const CHIBI_CREW: ChibiSlide[] = [
 		badge: "Y",
 		mark: "OP",
 	},
+	{
+		id: "hancock",
+		name: "HANCOCK",
+		image: "/chibi/hancock.png",
+		bgColor: "#BE185D",
+		textColor: "#FCE7F3",
+		topLabel: "EMPRESS",
+		bottomLeft: "KUJA",
+		bottomRight: "MERO",
+		badge: "H",
+		mark: "OP",
+	}
 ];
 
 function ChibiCard({ slide }: { slide: ChibiSlide }) {
 	return (
 		<article
-			className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border-[4px] border-black shadow-[6px_6px_0_0_#000] transition-[transform,box-shadow] duration-200 hover:-translate-y-1 hover:shadow-[8px_8px_0_0_#000] sm:rounded-3xl md:aspect-[3/4]"
+			className="relative aspect-[4/5] mb-6 w-full overflow-hidden rounded-2xl border-[4px] border-black shadow-[6px_6px_0_0_#000] transition-[transform,box-shadow] duration-200 hover:-translate-y-1 hover:shadow-[8px_8px_0_0_#000] sm:rounded-3xl md:aspect-[3/4]"
 			style={{ backgroundColor: slide.bgColor, color: slide.textColor }}
 		>
 			{/* Huge name behind character */}
@@ -273,7 +273,7 @@ export default function ChibiCarousel({ slides = CHIBI_CREW }: ChibiCarouselProp
 						{slides.map((slide) => (
 							<CarouselItem
 								key={slide.id}
-								className="group basis-[82%] pl-3 sm:basis-[55%] sm:pl-5 md:basis-[42%] lg:basis-[34%]"
+								className="group basis-[82%] pl-3 sm:basis-[55%] sm:pl-5 md:basis-[42%] lg:basis-[24%]"
 							>
 								<ChibiCard slide={slide} />
 							</CarouselItem>

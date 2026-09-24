@@ -4,166 +4,162 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const DEVELOPER_QUOTES = [
-  "Code is like humor. When you have to explain it, it's bad.",
-  "First, solve the problem. Then, write the code.",
-  "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
-  "The best error message is the one that never shows up.",
-  "Talk is cheap. Show me the code.",
-  "Programming isn't about what you know; it's about what you can figure out.",
-  "Simplicity is the soul of efficiency.",
-  "Make it work, make it right, make it fast.",
-  "The only way to learn a new programming language is by writing programs in it.",
-  "Developer: an organism that turns coffee into code.",
-  "In code we trust.",
-  "Clean code always looks like it was written by someone who cares.",
+interface GreetingItem {
+	text: string;
+	lang: string;
+	isScript?: boolean;
+}
+
+const GREETINGS: GreetingItem[] = [
+	{ text: "hello", lang: "English", isScript: true },
+	{ text: "नमस्ते", lang: "Hindi" },
+	{ text: "bonjour", lang: "French" },
+	{ text: "hola", lang: "Spanish" },
+	{ text: "こんにちは", lang: "Japanese" },
+	{ text: "ciao", lang: "Italian" },
+	{ text: "olá", lang: "Portuguese" },
+	{ text: "안녕하세요", lang: "Korean" },
+	{ text: "hallo", lang: "German" },
+	{ text: "你好", lang: "Chinese" },
+	{ text: "hello", lang: "Welcome", isScript: true },
 ];
 
-const LOADING_WORDS = ["Loading...", "Building...", "Crafting..."];
-
-const wordVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.08, duration: 0.4 },
-  }),
-  exit: { opacity: 0, y: -20 },
-};
-
-const letterVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: 0.5 + i * 0.04, duration: 0.3 },
-  }),
-};
-
 interface LoadingScreenProps {
-  onComplete?: () => void;
-  minDuration?: number;
+	onComplete?: () => void;
+	minDuration?: number;
 }
 
 export default function LoadingScreen({
-  onComplete,
-  minDuration = 200,
+	onComplete,
+	minDuration = 6000,
 }: LoadingScreenProps) {
-  const [isVisible, setIsVisible] = useState(true);
-  const [quoteIndex, setQuoteIndex] = useState(0);
-  const [wordIndex, setWordIndex] = useState(0);
+	const [isVisible, setIsVisible] = useState(true);
+	const [index, setIndex] = useState(0);
 
-  useEffect(() => {
-    const quoteInterval = setInterval(() => {
-      setQuoteIndex((i) => (i + 1) % DEVELOPER_QUOTES.length);
-    }, 2200);
-    return () => clearInterval(quoteInterval);
-  }, []);
+	// Cycle through greetings
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setIndex((prev) => (prev + 1) % GREETINGS.length);
+		}, 380);
 
-  useEffect(() => {
-    const wordInterval = setInterval(() => {
-      setWordIndex((i) => (i + 1) % LOADING_WORDS.length);
-    }, 1200);
-    return () => clearInterval(wordInterval);
-  }, []);
+		return () => clearInterval(interval);
+	}, []);
 
-  useEffect(() => {
-    const start = Date.now();
-    const id = setInterval(() => {
-      const elapsed = Date.now() - start;
-      const ready = typeof document !== "undefined" && document.readyState === "complete";
-      if (ready && elapsed >= minDuration) {
-        clearInterval(id);
-        setIsVisible(false);
-        onComplete?.();
-      }
-    }, 100);
-    return () => clearInterval(id);
-  }, [minDuration, onComplete]);
+	// Handle minimum duration and completion
+	useEffect(() => {
+		const start = Date.now();
+		const checkCompletion = setInterval(() => {
+			const elapsed = Date.now() - start;
+			const isReady =
+				typeof document !== "undefined" &&
+				(document.readyState === "complete" || document.readyState === "interactive");
 
-  return (
-    <AnimatePresence mode="wait">
-      {isVisible && (
-        <motion.div
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-myblack px-6"
-          initial={{ opacity: 1 }}
-          exit={{
-            opacity: 0,
-            transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
-          }}
-          transition={{ duration: 0.3 }}
-        >
-          <Image src="https://media.tenor.com/kGe0A0NBA8kAAAAj/one-piece-pixel.gif" alt="Narendra" width={1000} height={1000} className="w-24 h-24" />
-          {/* Animated loading word */}
-          <div className="mb-6 flex justify-center overflow-hidden">
-            <AnimatePresence mode="wait">
+			if (isReady && elapsed >= minDuration) {
+				clearInterval(checkCompletion);
+				setIsVisible(false);
+				onComplete?.();
+			}
+		}, 100);
 
-              
-              <motion.div
-                key={wordIndex}
-                className="flex font-telma text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl"
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                variants={wordVariants}
-              >
-                {LOADING_WORDS[wordIndex].split("").map((letter, i) => (
-                  <motion.span
-                    key={`${wordIndex}-${i}`}
-                    variants={letterVariants}
-                    custom={i}
-                    className="inline-block leading-relaxed"
-                  >
-                    {letter}
-                  </motion.span>
-                ))}
-                {/* <motion.span
-                  animate={{ opacity: [1, 0] }}
-                  transition={{ duration: 0.6, repeat: Infinity }}
-                  className="ml-0.5 inline-block w-0.5 bg-white sm:w-1"
-                /> */}
-              </motion.div>
-            </AnimatePresence>
-          </div>
+		return () => clearInterval(checkCompletion);
+	}, [minDuration, onComplete]);
 
-          {/* Progress bar */}
-          <motion.div
-            className="mb-12 h-0.5 w-48 overflow-hidden rounded-full bg-white/10 sm:w-64"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            <motion.div
-              className="h-full rounded-full bg-white"
-              initial={{ width: "0%" }}
-              animate={{ width: "100%" }}
-              transition={{ duration: minDuration / 1000, ease: "easeInOut" }}
+	// Allow instant skip on click or keypress
+	const handleSkip = () => {
+		setIsVisible(false);
+		onComplete?.();
+	};
+
+	return (
+		<AnimatePresence mode="wait">
+			{isVisible && (
+				<motion.div
+					onClick={handleSkip}
+					initial={{ opacity: 1 }}
+					exit={{
+						opacity: 0,
+						scale: 1.04,
+						filter: "blur(14px)",
+						transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
+					}}
+					className="fixed inset-0 z-[99999] flex flex-col items-center justify-center cursor-pointer select-none overflow-hidden bg-[#f3f3f3]"
+					aria-label="Loading splash screen"
+				>
+					{/* macOS Monterey Dynamic Ambient Mesh Gradient Orbs */}
+					<div className="absolute inset-0 pointer-events-none overflow-hidden">
+						{/* Magenta / Hot Pink Orb (Upper Left) */}
+						<motion.div
+							animate={{
+								x: [0, 30, -20, 0],
+								y: [0, -35, 20, 0],
+								scale: [1, 1.15, 0.95, 1],
+							}}
+							transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+							className="absolute -top-[12%] -left-[12%] h-[80vw] sm:h-[80vh] w-[80vw] sm:w-[80vh] rounded-full bg-[#f3f3f3] opacity-80 blur-[85px] sm:blur-[135px]"
+						/>
+
+						{/* Royal Blue / Electric Violet Orb (Lower Left) */}
+						<motion.div
+							animate={{
+								x: [0, -25, 30, 0],
+								y: [0, 25, -20, 0],
+								scale: [1, 0.95, 1.18, 1],
+							}}
+							transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+							className="absolute -bottom-[18%] -left-[12%] h-[85vw] sm:h-[85vh] w-[85vw] sm:w-[85vh] rounded-full bg-[#898989] opacity-85 blur-[90px] sm:blur-[145px]"
+						/>
+
+						{/* Rich Purple / Plum Orb (Center & Bottom Right) */}
+						<motion.div
+							animate={{
+								x: [0, 30, -25, 0],
+								y: [0, -25, 25, 0],
+								scale: [1, 1.14, 0.92, 1],
+							}}
+							transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+							className="absolute bottom-[2%] right-[2%] h-[75vw] sm:h-[75vh] w-[75vw] sm:w-[75vh] rounded-full bg-[#f3f3f3] opacity-85 blur-[85px] sm:blur-[135px]"
+						/>
+
+						{/* Soft Rose / Coral Haze Orb (Upper Right) */}
+						<motion.div
+							animate={{
+								x: [0, -25, 25, 0],
+								y: [0, 30, -25, 0],
+								scale: [1, 0.92, 1.12, 1],
+							}}
+							transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+							className="absolute -top-[18%] right-[10%] h-[70vw] sm:h-[70vh] w-[70vw] sm:w-[70vh] rounded-full bg-[#f3f3f3] opacity-75 blur-[85px] sm:blur-[125px]"
+						/>
+
+						{/* Subtle Dark Vignette Border */}
+						<div className="absolute inset-0 bg-radial from-transparent via-[#7a7a7a52]/30 to-[#3a3a3a]/70" />
+					</div>
+
+					{/* Center Typography: macOS Monterey "Hello" in Multiple Languages */}
+					<div className="relative z-10 flex flex-col items-center justify-center px-4">
+						<Image
+              src="/loading.gif"
+              alt="Hello in multiple languages"
+              width={2000}
+              height={2000}
+              className="mb-6 md:h-96 object-contain"
             />
-          </motion.div>
 
-          {/* Developer quote */}
-          <motion.blockquote
-            key={quoteIndex}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.4 }}
-            className="max-w-xl text-center font-inter text-sm font-light italic leading-relaxed text-white/70 sm:text-base"
-          >
-            &quot;{DEVELOPER_QUOTES[quoteIndex]}&quot;
-          </motion.blockquote>
 
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="mt-8 font-inter text-xs uppercase tracking-[0.3em] text-white/40"
-          >
-            Developer background
-          </motion.p>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+					</div>
+
+					{/* Subtle Bottom macOS Hint */}
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 0.6 }}
+						transition={{ delay: 1, duration: 0.6 }}
+						className="absolute bottom-8 sm:bottom-10 z-10 flex items-center gap-2 font-inter text-[11px] sm:text-xs tracking-widest uppercase text-white/60"
+					>
+						<span>Click anywhere to continue</span>
+					</motion.div>
+				</motion.div>
+			)}
+		</AnimatePresence>
+	);
 }
+

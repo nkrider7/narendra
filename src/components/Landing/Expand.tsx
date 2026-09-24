@@ -107,7 +107,7 @@ export default function Expand() {
 				aria-hidden
 			/>
 
-			<div className="relative z-10 mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+			<div className="relative z-10 mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 				{/* Header */}
 				<header className="mb-8 max-w-2xl sm:mb-12">
 					<span

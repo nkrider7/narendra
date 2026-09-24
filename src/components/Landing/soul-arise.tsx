@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function SoulArise() {
   return (
-    <section className="bg-black text-white px-4 md:px-8 py-10 font-sans">
+    <section className="bg-[#0a0a0a] text-white px-4 md:px-8 py-10 font-sans">
       <div className="max-w-7xl mx-auto">
         {/* Top Title Row */}
         <div className="flex justify-between items-center mb-6">

@@ -1,226 +1,296 @@
 "use client";
 
-import { CREW_MEMBERS, type CrewMember } from "@/data/crew";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useState } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
-const COLORS = {
-	bg: "#F5F5F5",
-	divider: "#E0E0E0",
-	text: "#000000",
-	muted: "#999999",
-	decorative: "#E0E0E0",
-	pill: "#E8E8E8",
-	yellow: "#a2f23e",
-	red: "#FF4D4D",
-	badge: "#C8C8C8",
-	blue: "#3E61F2",
-} as const;
-
-function StarBadge({ number }: { number: string }) {
-	return (
-		<div className="relative flex h-9 w-9 items-center justify-center sm:h-10 sm:w-10">
-			<svg
-				viewBox="0 0 40 40"
-				className="absolute inset-0 h-full w-full"
-				aria-hidden
-			>
-				<polygon
-					points="20,2 24,14 37,14 27,22 31,35 20,27 9,35 13,22 3,14 16,14"
-					fill={COLORS.badge}
-				/>
-			</svg>
-			<span className="relative z-10 font-inter text-[10px] font-bold text-black sm:text-xs">
-				{number}
-			</span>
-		</div>
-	);
+export interface CareerMilestone {
+	id: string;
+	number: string;
+	title: string;
+	displayName: string;
+	rolePrefix: string;
+	role: string;
+	period: string;
+	description: string;
+	tech: string[];
+	coords: { x: number; y: number };
+	accent: string;
 }
 
-function RoleLine({ member }: { member: CrewMember }) {
+const MILESTONES: CareerMilestone[] = [
+	{
+		id: "ds-college",
+		number: "01",
+		title: "DS COLLEGE",
+		displayName: "DS College",
+		rolePrefix: "Academia",
+		role: "Bechelor of Computer Application (BCA)",
+		period: "2021 — 2024",
+		description:
+			"Built solid foundations in Computer Science engineering, Data Structures & Algorithms, Database Management Systems, Operating Systems, and Object-Oriented Software Design.",
+		tech: ["C++", "DSA", "DBMS", "Operating Systems", "Computer Networks", "JavaScript"],
+		coords: { x: 50, y: 78 },
+		accent: "#2563eb",
+	},
+	{
+		id: "boomzo",
+		number: "02",
+		title: "BOOMZO",
+		displayName: "Boomzo",
+		rolePrefix: "Startup",
+		role: "Full-Stack Developer",
+		period: "Oct 2024 — Jul 2025",
+		description:
+			"Started as Frontend Developer and transitioned into React Native to help launch Boomzo's first mobile applications. Expanded product ownership and strengthened full-stack capabilities with Next.js and API-driven development.",
+		tech: ["React Native", "Next.js", "TypeScript", "Node.js", "Tailwind CSS", "Redux"],
+		coords: { x: 35, y: 57 },
+		accent: "#dc2626",
+	},
+	{
+		id: "remote-dev",
+		number: "03",
+		title: "KITFITX",
+		displayName: "Remote Software Developer",
+		rolePrefix: "Remote",
+		role: "Full-Stack Developer",
+		period: "Sep 2025 — Mar 2026",
+		description:
+			"Worked as a Software Developer at a health-focused startup, building features for menstrual tracking, wellness insights, and daily health support across React, Next.js, React Native, and backend services.",
+		tech: ["Next.js", "React Native", "PostgreSQL", "Node.js", "REST APIs", "Tailwind CSS"],
+		coords: { x: 74, y: 56 },
+		accent: "#ea580c",
+	},
+	{
+		id: "fishman",
+		number: "04",
+		title: "FISHMAN",
+		displayName: "Fishman",
+		rolePrefix: "Self",
+		role: "Founder & Builder",
+		period: "Jul 2026 — Present",
+		description:
+			"Building end-to-end modern web applications with a strong focus on high-performance UX, elegant UI interactions, scalable Next.js architectures, and full-stack execution.",
+		tech: ["Next.js 15", "React 19", "Framer Motion", "Tailwind CSS", "TypeScript"],
+		coords: { x: 32, y: 40 },
+		accent: "#3b82f6",
+	},
+	{
+		id: "soulspace",
+		number: "05",
+		title: "SOULSPACE",
+		displayName: "SoulSpace",
+		rolePrefix: "Core",
+		role: "SaaS & Product Engineer",
+		period: "2026 — Present",
+		description:
+			"Architecting and shipping high-velocity SaaS products, real-time collaboration workflows, and modern cloud architectures with scalable database systems.",
+		tech: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Tailwind CSS", "WebSockets"],
+		coords: { x: 67, y: 40 },
+		accent: "#7c3aed",
+	},
+	{
+		id: "next-company",
+		number: "06",
+		title: "YOUR COMPANY",
+		displayName: "Your Company",
+		rolePrefix: "Upcoming",
+		role: "Software Engineer",
+		period: "Loading 2026+",
+		description:
+			"Ready to bring product velocity, full-stack craftsmanship, and deep curiosity to ambitious teams building cutting-edge software and user experiences.",
+		tech: ["Full-Stack", "AI Agents", "System Design", "Product Engineering", "Cloud Infrastructure"],
+		coords: { x: 52, y: 18 },
+		accent: "#10b981",
+	},
+];
+
+export default function CrewRoster() {
+	// Default selected place is Fishman (matches the user mockup image)
+	const [activeId, setActiveId] = useState<string>("next-company");
+
+	const activeIndex = MILESTONES.findIndex((m) => m.id === activeId);
+	const activeMilestone = MILESTONES[activeIndex] || MILESTONES[3];
+
+	const handlePrev = () => {
+		const newIndex = (activeIndex - 1 + MILESTONES.length) % MILESTONES.length;
+		setActiveId(MILESTONES[newIndex].id);
+	};
+
+	const handleNext = () => {
+		const newIndex = (activeIndex + 1) % MILESTONES.length;
+		setActiveId(MILESTONES[newIndex].id);
+	};
+
 	return (
-		<div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
-			{member.rolePrefix && (
-				<span className="font-inter text-sm font-bold text-black sm:text-base">
-					{member.rolePrefix}
-					<span className="mx-1">*</span>
-				</span>
-			)}
-			{member.accent === "red-dot" && (
-				<span
-					className="inline-block h-2.5 w-2.5 shrink-0 rounded-full"
-					style={{ backgroundColor: COLORS.red }}
-					aria-hidden
-				/>
-			)}
-			<span
-				className={`font-inter text-sm font-bold uppercase tracking-wide text-black sm:text-base ${
-					member.accent === "yellow-highlight" ? "px-1.5 py-0.5" : member.accent === "blue-highlight" ? "px-1.5 py-0.5 bg-blue-400 " : ""
-				}`}
-				style={
-					member.accent === "yellow-highlight"
-						? { backgroundColor: COLORS.yellow }
-						: undefined
-				}
-			>
-				{member.role}
-			</span>
-		</div>
-	);
-}
+		<section className="relative w-full bg-white py-16 sm:py-20 md:py-28 font-inter text-neutral-900 antialiased overflow-hidden">
+			<div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+				
+				{/* 2-Column Responsive Layout Matching the Mockup */}
+				<div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+					
+					{/* Left Column: Active Milestone Details */}
+					<div className="lg:col-span-6 flex flex-col justify-center select-none">
+						{/* Milestone Quick Navigation Tabs */}
+						<div className="flex flex-wrap items-center gap-2 mb-6 sm:mb-8">
+							{MILESTONES.map((m) => (
+								<button
+									key={m.id}
+									onClick={() => setActiveId(m.id)}
+									className={`px-3 py-1 rounded-full font-mono text-xs font-semibold transition-all duration-200 ${
+										activeId === m.id
+											? "bg-black text-white shadow-sm scale-105"
+											: "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+									}`}
+								>
+									{m.number} {m.displayName}
+								</button>
+							))}
+						</div>
 
-function CharacterVisual({ member }: { member: CrewMember }) {
-	const badgeOnRight = member.badgePosition === "top-right";
+						{/* Animated Detail Card */}
+						<AnimatePresence mode="wait">
+							<motion.div
+								key={activeMilestone.id}
+								initial={{ opacity: 0, y: 14 }}
+								animate={{ opacity: 1, y: 0 }}
+								exit={{ opacity: 0, y: -14 }}
+								transition={{ duration: 0.35, ease: "easeOut" }}
+								className="flex flex-col"
+							>
+								{/* Title */}
+								<h2 className="text-4xl sm:text-5xl lg:text-[58px] font-black uppercase tracking-tight text-black leading-none">
+									{activeMilestone.title}
+								</h2>
 
-	return (
-		<div className="relative mx-auto w-full max-w-[220px] sm:max-w-[260px] md:max-w-[300px] lg:max-w-[340px]">
-			<div
-				className={`absolute z-20 ${badgeOnRight ? "-right-1 top-0 sm:right-0" : "-left-1 top-0 sm:left-0"}`}
-			>
-				<StarBadge number={member.number} />
-			</div>
+								{/* Role & Prefix */}
+								<div className="mt-3.5 flex items-center gap-2 text-base sm:text-lg">
+									<span className="text-neutral-500 font-medium">
+										{activeMilestone.rolePrefix}
+									</span>
+									<span className="text-neutral-400 font-bold">•</span>
+									<span className="font-bold text-neutral-900">
+										{activeMilestone.role}
+									</span>
+								</div>
 
-			<div
-				className="relative flex aspect-[4/3] items-end justify-center overflow-hidden rounded-[999px] px-4 pt-8"
-				style={{ backgroundColor: COLORS.pill }}
-			>
-				{member.image ? (
-					<motion.div
-						animate={{ y: [0, -6, 0] }}
-						transition={{
-							duration: 3.5,
-							repeat: Infinity,
-							ease: "easeInOut",
-						}}
-						className="relativec h-40 md:h-60 w-full"
-					>
-						<Image
-							src={member.image}
-							alt={member.name}
-							fill
-							className="object-cover object-top"
-							sizes="(max-width: 768px) 220px, 340px"
-						/>
-					</motion.div>
-				) : (
-					<div className="flex h-[75%] w-full items-center justify-center pb-4">
-						<span className="font-inter text-xs uppercase tracking-widest text-[#BBBBBB]">
-							Add image
-						</span>
+								{/* Period */}
+								<p className="mt-1 font-mono text-xs sm:text-sm font-semibold text-neutral-400 tracking-wide">
+									{activeMilestone.period}
+								</p>
+
+								{/* Description */}
+								<p className="mt-5 sm:mt-6 text-sm sm:text-base lg:text-[17px] leading-relaxed text-neutral-600 max-w-xl font-normal">
+									{activeMilestone.description}
+								</p>
+
+								{/* Tech Stack Pills */}
+								<div className="mt-7 sm:mt-8 flex flex-wrap gap-2.5 max-w-xl">
+									{activeMilestone.tech.map((t) => (
+										<span
+											key={t}
+											className="rounded-lg border border-neutral-300 bg-white px-3.5 py-1.5 font-mono text-xs sm:text-sm font-medium text-neutral-800 shadow-[1px_1px_0_0_rgba(0,0,0,0.04)] hover:border-black transition-colors"
+										>
+											{t}
+										</span>
+									))}
+								</div>
+							</motion.div>
+						</AnimatePresence>
+
+						{/* Navigation Arrows */}
+						<div className="mt-10 sm:mt-12 flex items-center gap-3">
+							<button
+								onClick={handlePrev}
+								aria-label="Previous milestone"
+								className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 bg-white text-black transition-all hover:bg-black hover:text-white hover:border-black active:scale-95 shadow-xs"
+							>
+								<ArrowLeft className="h-4 w-4" />
+							</button>
+							<button
+								onClick={handleNext}
+								aria-label="Next milestone"
+								className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 bg-white text-black transition-all hover:bg-black hover:text-white hover:border-black active:scale-95 shadow-xs"
+							>
+								<ArrowRight className="h-4 w-4" />
+							</button>
+							<span className="font-mono text-xs font-semibold text-neutral-400 ml-2">
+								{activeIndex + 1} / {MILESTONES.length}
+							</span>
+						</div>
 					</div>
-				)}
-			</div>
-		</div>
-	);
-}
 
-function DecorativeText({ text }: { text: string }) {
-	return (
-		<div
-			className="pointer-events-none hidden select-none items-center justify-center md:flex"
-			aria-hidden
-		>
-			<span
-				className="font-inter text-[7rem] font-bold leading-none lg:text-[9rem] xl:text-[11rem]"
-				style={{ color: COLORS.decorative }}
-			>
-				{text}
-			</span>
-		</div>
-	);
-}
+					{/* Right Column: 3D Career Map Island with Dotted Guide Lines & Pins */}
+					<div className="lg:col-span-6 relative flex items-center justify-center">
+						<div className="relative w-full max-w-[500px] aspect-[1/1.65]">
+							
+							{/* Background SVG Blueprint Dotted Guide Lines matching the mockup */}
+							
 
-function MemberInfo({ member }: { member: CrewMember }) {
-	return (
-		<div className="flex flex-col justify-center px-2 text-center md:px-6 md:text-left">
-			<h3 className="font-inter text-xl font-bold uppercase leading-tight tracking-tight text-black sm:text-2xl md:text-3xl lg:text-4xl">
-				{member.name}
-			</h3>
-			<RoleLine member={member} />
-			<p
-				className="mt-2 font-inter text-xs sm:text-sm"
-				style={{ color: COLORS.muted }}
-			>
-				{member.subtitle}
-			</p>
-		</div>
-	);
-}
+							{/* 3D Isometric Map Image */}
+							<div className="relative w-full h-full">
+								<Image
+									src="/map.png"
+									alt="3D Career Island Map"
+									fill
+									className="object-contain drop-shadow-sm pointer-events-none select-none"
+									priority
+								/>
+							</div>
 
-function CrewRow({
-	member,
-	index,
-}: {
-	member: CrewMember;
-	index: number;
-}) {
-	const reversed = index % 2 === 1;
+							{/* Interactive Numbered Pins on Map */}
+							{MILESTONES.map((m) => {
+								const isActive = activeId === m.id;
 
-	return (
-		<motion.article
-			initial={{ opacity: 0, y: 24 }}
-			whileInView={{ opacity: 1, y: 0 }}
-			viewport={{ once: true, margin: "-80px" }}
-			transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-			className="border-b py-10 sm:py-12 md:py-14 lg:py-16"
-			style={{ borderColor: COLORS.divider }}
-		>
-			{/* Mobile: stacked */}
-			<div className="flex flex-col items-center gap-6 md:hidden">
-				<CharacterVisual member={member} />
-				<MemberInfo member={member} />
-			</div>
+								return (
+									<div
+										key={m.id}
+										style={{
+											left: `${m.coords.x}%`,
+											top: `${m.coords.y}%`,
+										}}
+										className="absolute -translate-x-1/2 -translate-y-1/2 z-20"
+									>
+										{/* Floating Label Badge (Shown on Active / Hover) */}
+										<AnimatePresence>
+											{isActive && (
+												<motion.div
+													initial={{ opacity: 0, y: 6, scale: 0.9 }}
+													animate={{ opacity: 1, y: 0, scale: 1 }}
+													exit={{ opacity: 0, y: 4, scale: 0.9 }}
+													transition={{ duration: 0.2 }}
+													className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 whitespace-nowrap rounded-lg border-2 border-black bg-white px-2.5 py-1 font-mono text-[11px] font-bold text-black shadow-[2px_2px_0_0_#000] flex items-center gap-1.5 z-30"
+												>
+													<span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+													<span>{m.displayName}</span>
+												</motion.div>
+											)}
+										</AnimatePresence>
 
-			{/* Desktop: alternating 3-column layout */}
-			<div
-				className={`mx-auto hidden max-w-6xl grid-cols-[1fr_1.1fr_1fr] items-center gap-6 px-6 md:grid lg:gap-10 lg:px-10 ${
-					reversed ? "[&>*:nth-child(1)]:order-3 [&>*:nth-child(2)]:order-2 [&>*:nth-child(3)]:order-1" : ""
-				}`}
-			>
-				<CharacterVisual member={member} />
-				<MemberInfo member={member} />
-				<DecorativeText text={member.decorativeText} />
-			</div>
-		</motion.article>
-	);
-}
+										{/* Interactive Numbered Pin Button */}
+										<button
+											onClick={() => setActiveId(m.id)}
+											aria-label={`Select ${m.displayName}`}
+											className={`flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full border-2 border-black font-mono text-xs font-black transition-all duration-200 cursor-pointer ${
+												isActive
+													? "bg-black text-white shadow-[2px_2px_0_0_#000] scale-110 ring-4 ring-neutral-300/50"
+													: "bg-white text-black shadow-[2px_2px_0_0_#000] hover:scale-110 hover:bg-neutral-100"
+											}`}
+										>
+											{m.number}
+										</button>
+									</div>
+								);
+							})}
 
-export default function CrewRoster({
-	members = CREW_MEMBERS,
-}: {
-	members?: CrewMember[];
-}) {
-	return (
-		<section className="relative w-full" style={{ backgroundColor: COLORS.bg }}>
-			<div className="mx-auto max-w-6xl px-5 pt-14 sm:px-8 sm:pt-16 lg:px-10">
-				<motion.div
-					initial={{ opacity: 0, y: 16 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.5 }}
-					className="mb-2 text-center md:mb-4 md:text-left"
-				>
-					<p
-						className="font-inter text-xs uppercase tracking-[0.35em]"
-						style={{ color: COLORS.muted }}
-					>
-						The journey
-					</p>
-					<h2 className="mt-2 font-inter text-3xl font-bold uppercase tracking-tight text-black sm:text-4xl">
-						Work Experience
-					</h2>
-				</motion.div>
-			</div>
+						</div>
+					</div>
 
-			<div className="border-t" style={{ borderColor: COLORS.divider }}>
-				{members.map((member, index) => (
-					<CrewRow
-						key={member.id}
-						member={member}
-						index={index}
-					/>
-				))}
+				</div>
+
 			</div>
 		</section>
 	);
 }
+

@@ -35,7 +35,7 @@ export default function Intro() {
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.2, duration: 0.6 }}
-					className="text-7xl max-w-2xl mx-auto  cursor-pointer md:text-9xl w-full  flex text-center items-center font-bilderberg text-black justify-center"
+					className="text-7xl max-w-2xl mx-auto  cursor-pointer md:text-9xl w-full  flex text-center items-center font-bilderberg text-[#2a2a2a] justify-center"
 					style={{
 						WebkitTextStroke: "2px black",
 					}}
@@ -52,8 +52,8 @@ export default function Intro() {
 					}}
 				>
 					<span style={{
-						WebkitTextStroke: "2px #de4735",
-					}} className="text-[#de4735] md:text-[9rem]">Full-Stack </span>Developer
+						WebkitTextStroke: "2px #9c9c9a",
+					}} className="text-[#9c9c9a] md:text-[9rem]">Full-Stack </span>Developer
 				</motion.h1>
 
 				{/* <motion.h1
@@ -151,7 +151,7 @@ export default function Intro() {
 
 
 
-			<Image src="/avatar.webp" alt="narendra" width={2000} height={2000} className="mx-auto absolute bottom-0 z-20  md:h-[40rem] w-fit mt-24 md:mt-16" />
+			<Image src="/heronk.png" alt="narendra" width={2000} height={2000} className="mx-auto absolute bottom-0 z-20  md:h-[40rem] w-fit mt-24 md:mt-16" />
 		</div>
 	);
 }

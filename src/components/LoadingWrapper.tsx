@@ -18,7 +18,7 @@ export default function LoadingWrapper({
 
   return (
     <AppReadyContext.Provider value={isReady}>
-      <LoadingScreen minDuration={3500} onComplete={() => setIsReady(true)} />
+      <LoadingScreen minDuration={5500} onComplete={() => setIsReady(true)} />
       {children}
     </AppReadyContext.Provider>
   );
