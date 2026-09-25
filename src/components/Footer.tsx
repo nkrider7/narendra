@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Instagram, Linkedin } from "lucide-react";
+import { Github, Instagram, Linkedin } from "@/components/icons/SocialIcons";
 import Image from "next/image";
 
 const PAGE_LINKS = [

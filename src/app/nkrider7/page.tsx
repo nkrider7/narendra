@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Home, Github, Star, GitFork, Code, TrendingUp, Calendar, Award } from "lucide-react";
+import { Home, Star, GitFork, Code, TrendingUp, Calendar, Award } from "lucide-react";
+import { Github } from "@/components/icons/SocialIcons";
 import Image from "next/image";
 
 interface GitHubStats {

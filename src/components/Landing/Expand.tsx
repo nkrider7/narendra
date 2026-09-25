@@ -1,6 +1,7 @@
 "use client";
 
-import { Github, Linkedin, Mail, Twitter, X } from "lucide-react";
+import { Mail, X } from "lucide-react";
+import { Github, Linkedin, Twitter } from "@/components/icons/SocialIcons";
 import Image from "next/image";
 import Link from "next/link";
 

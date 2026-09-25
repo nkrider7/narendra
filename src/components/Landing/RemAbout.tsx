@@ -99,7 +99,7 @@ export default function RemAbout() {
 							className={`mb-3 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] ${neo}`}
 						>
 							<Gamepad2 className="h-3.5 w-3.5" strokeWidth={2.5} />
-							What I build
+							What I build in 2D
 						</span>
 						<h2 className="mt-3 text-[clamp(2rem,6vw,3.5rem)] font-black leading-[1.05] tracking-tight">
 							Work that{" "}

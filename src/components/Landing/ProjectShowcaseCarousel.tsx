@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Sparkles, Code2, Smartphone, Globe, Layers } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Sparkles, Code2, Smartphone, Globe, Layers, Astroid, Infinity } from "lucide-react";
 import { motion } from "framer-motion";
 
 export interface ProjectShowcaseItem {
@@ -22,15 +22,40 @@ export interface ProjectShowcaseItem {
 
 const DEFAULT_PROJECTS: ProjectShowcaseItem[] = [
 	{
+		id: "broocode",
+		title: "BrooCode Agency",
+		description: "High-performance portfolio & product suite built with Next.js 15 and smooth motion workflows.",
+		badge1: "Full-Stack",
+		badge2: "Featured",
+		image: "/bro.png",
+		theme: "white", // Matches Card 1 vibrant lime from the reference
+		accentColor: "#F5F3ED",
+		ctaLabel: "View Project",
+		icon: <Infinity className="h-4 w-4" />,
+	},
+	{
+		id: "soulspace",
+		title: "SoulSpace",
+		description: "Local-first productivity and creative workspace for notes, tasks, projects, automation, and AI-powered workflows.",
+		badge1: "Automation",
+		badge2: "Productivity",
+		image: "/soulspace.jpeg",
+		link: "https://github.com/nkrider7",
+		theme: "cream",
+		accentColor: "#F5F3ED",
+		ctaLabel: "Read More",
+		icon: <Astroid fill="#57019a" className="h-4 w-4" />,
+	},
+	{
 		id: "fishman",
 		title: "Fishman Suite",
 		description: "High-performance portfolio & product suite built with Next.js 15 and smooth motion workflows.",
 		badge1: "Full-Stack",
 		badge2: "Featured",
-		image: "/fishmanmock.png",
+		image: "/fishman.jpeg",
 		link: "https://github.com/nkrider7",
 		theme: "neon", // Matches Card 1 vibrant lime from the reference
-		accentColor: "#A3FF2E",
+		accentColor: "#F5F3ED",
 		ctaLabel: "View Project",
 		icon: <Sparkles className="h-4 w-4" />,
 	},
@@ -40,7 +65,7 @@ const DEFAULT_PROJECTS: ProjectShowcaseItem[] = [
 		description: "Health-tech wellness and menstrual cycle analytics platform with real-time biometric tracking.",
 		badge1: "Health Tech",
 		badge2: "React Native",
-		image: "/fishmanmock.png",
+		image: "/kitfitx.jpeg",
 		link: "https://github.com/nkrider7",
 		theme: "cream",
 		accentColor: "#F5F3ED",
@@ -53,8 +78,8 @@ const DEFAULT_PROJECTS: ProjectShowcaseItem[] = [
 		description: "Cross-platform mobile application and backend API infrastructure launched to thousands of active users.",
 		badge1: "Mobile App",
 		badge2: "Next.js",
-		image: "/fishmanmock.png",
-		link: "https://github.com/nkrider7",
+		image: "https://i.pinimg.com/1200x/39/86/91/398691f123726a5763e9c47980964fff.jpg",
+		link: "https://i.pinimg.com/1200x/39/86/91/398691f123726a5763e9c47980964fff.jpg",
 		theme: "cream",
 		accentColor: "#F5F3ED",
 		ctaLabel: "Read More",
@@ -185,7 +210,7 @@ export default function ProjectShowcaseCarousel({
 					<div className="flex gap-5 sm:gap-6 select-none py-2">
 						{projects.map((project, index) => {
 							const isNeon = project.theme === "neon" || index === 0;
-							const headerBg = isNeon ? "#A3FF2E" : project.accentColor || "#F5F3ED";
+							const headerBg = project.accentColor;
 
 							return (
 								<motion.div
@@ -194,7 +219,7 @@ export default function ProjectShowcaseCarousel({
 									transition={{ duration: 0.3, ease: "easeOut" }}
 									className="group flex-shrink-0 w-[290px] sm:w-[320px] md:w-[340px] flex flex-col rounded-[28px] sm:rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-black/5"
 									style={{
-										backgroundColor: isNeon ? "#A3FF2E" : "#F5F3ED",
+										backgroundColor: "#F5F3ED",
 									}}
 								>
 									{/* Top Half: Badges, Title, Subtitle, Circular Icon */}
@@ -244,7 +269,7 @@ export default function ProjectShowcaseCarousel({
 											src={project.image}
 											alt={project.title}
 											fill
-											className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+											className="object-cover object-left transition-transform duration-700 ease-out group-hover:scale-105"
 											sizes="(max-width: 640px) 290px, (max-width: 768px) 320px, 340px"
 										/>
 

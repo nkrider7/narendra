@@ -22,43 +22,49 @@ const reviews = [
     name: "DigitalKosh",
     link: "https://digitalkosh.netlify.app/",
     body: "I've never seen anything like this before. It's amazing. I love it.",
-    img: "/digital.png",
+    img: "/test8.jpeg",
   },
   {
     name: "Medihelp",
     link: "https://medcareindia.netlify.app/",
     body: "I don't know what to say. I'm speechless. This is amazing.",
-    img: "/medcare.png",
+    img: "/test6.jpeg",
   },
   {
     name: "Vani Cycle",
     link: "https://www.npmjs.com/package/vani-cycle",
     body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "/vani.png",
+    img: "/test7.jpeg",
   },
   {
     name: "https://nkrider7.github.io/fishman-web/",
     link: "https://nkrider7.github.io/fishman-web/",
     body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "/fishmanmock.png",
+    img: "/test5.jpeg",
+  },
+  {
+    name: "https://nkrider7.github.io/fishman-web/",
+    link: "https://nkrider7.github.io/fishman-web/",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "/test4.jpeg",
   },
   {
     name: "BrooCode",
     link: "https://broocode.vercel.app/",
     body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "/broocode.png",
+    img: "/test3.jpeg",
   },
   {
     name: "Portfolio",
     link: "https://cybergenerator.netlify.app/",
     body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "/cybergen.png",
+    img: "/test1.jpeg",
   },
   {
     name: "Petopia",
     link: "https://pals-petopia.netlify.app/",
     body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "/patopia.png",
+    img: "/test2.jpeg",
   },
 ].map((r, i) => ({ ...r, gradient: GRADIENTS[i % GRADIENTS.length] }));
 
@@ -68,7 +74,7 @@ const secondRow = reviews.slice(Math.ceil(reviews.length / 2));
 function ReviewCard({ img }: { img: string }) {
   return (
     <Image
-      className="rounded-lg object-cover transition-transform hover:scale-[1.02]"
+      className="rounded-lg h-40 w-56  md:h-80 md:w-96 object-cover transition-transform hover:scale-[1.02]"
       width={300}
       height={300}
       alt=""
@@ -121,9 +127,9 @@ export function MarqueeDemo() {
           className="font-inter uppercase text-3xl mb-8"
           style={{ fontWeight: "200" }}
         >
-          Our<span style={{ fontWeight: "800" }}>Works</span>
+          Creative<span style={{ fontWeight: "800" }}>Works</span>
         </h1>
-        <Marquee pauseOnHover className="[--duration:20s]">
+        <Marquee pauseOnHover className="[--duration:20s]" repeat={5}>
           {firstRow.map((review) => (
             <a
               key={review.name}
