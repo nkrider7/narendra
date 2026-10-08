@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Sparkles, Code2, Smartphone, Globe, Layers, Astroid, Infinity } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Sparkles, Code2, Smartphone, Globe, Layers, Astroid, Infinity, Fish } from "lucide-react";
 import { motion } from "framer-motion";
 
 export interface ProjectShowcaseItem {
@@ -40,7 +40,7 @@ const DEFAULT_PROJECTS: ProjectShowcaseItem[] = [
 		badge1: "Automation",
 		badge2: "Productivity",
 		image: "/soulspace.jpeg",
-		link: "https://github.com/nkrider7",
+		link: "https://www.soularise.space/",
 		theme: "cream",
 		accentColor: "#F5F3ED",
 		ctaLabel: "Read More",
@@ -48,16 +48,16 @@ const DEFAULT_PROJECTS: ProjectShowcaseItem[] = [
 	},
 	{
 		id: "fishman",
-		title: "Fishman Suite",
-		description: "High-performance portfolio & product suite built with Next.js 15 and smooth motion workflows.",
+		title: "Fishman API",
+		description: "The Native, Git-First API IDE for Modern Developers.",
 		badge1: "Full-Stack",
 		badge2: "Featured",
 		image: "/fishman.jpeg",
-		link: "https://github.com/nkrider7",
-		theme: "neon", // Matches Card 1 vibrant lime from the reference
+		link: "https://nkrider7.github.io/fishman-web/",
+		theme: "white", // Matches Card 1 vibrant lime from the reference
 		accentColor: "#F5F3ED",
 		ctaLabel: "View Project",
-		icon: <Sparkles className="h-4 w-4" />,
+		icon: <Fish className="h-4 w-4" />,
 	},
 	{
 		id: "kitfitx",
@@ -74,12 +74,12 @@ const DEFAULT_PROJECTS: ProjectShowcaseItem[] = [
 	},
 	{
 		id: "boomzo",
-		title: "Boomzo Mobile",
-		description: "Cross-platform mobile application and backend API infrastructure launched to thousands of active users.",
+		title: "Boomzo App",
+		description: "Developed an on-demand service app for an Aligarh-based startup.",
 		badge1: "Mobile App",
-		badge2: "Next.js",
-		image: "https://i.pinimg.com/1200x/39/86/91/398691f123726a5763e9c47980964fff.jpg",
-		link: "https://i.pinimg.com/1200x/39/86/91/398691f123726a5763e9c47980964fff.jpg",
+		badge2: "React Native",
+		image: "/boomzo.png",
+		link: "https://play.google.com/store/apps/details?id=com.boomzo.customer&pli=1",
 		theme: "cream",
 		accentColor: "#F5F3ED",
 		ctaLabel: "Read More",
@@ -87,12 +87,12 @@ const DEFAULT_PROJECTS: ProjectShowcaseItem[] = [
 	},
 	{
 		id: "soularise",
-		title: "SoulArise SaaS",
-		description: "Cloud-native creative application with real-time multiplayer canvas and advanced state sync.",
-		badge1: "SaaS Platform",
+		title: "MediCare India",
+		description: "Medical and healthcare platform with real-time patient monitoring and analytics.",
+		badge1: "Next.js",
 		badge2: "Web App",
-		image: "/soularise.png",
-		link: "https://github.com/nkrider7",
+		image: "/medcare.png",
+		link: "http://medcareindia.netlify.app/",
 		theme: "cream",
 		accentColor: "#F5F3ED",
 		ctaLabel: "Read More",
@@ -100,12 +100,12 @@ const DEFAULT_PROJECTS: ProjectShowcaseItem[] = [
 	},
 	{
 		id: "digital",
-		title: "Digital Agency",
+		title: "Digital Kosh",
 		description: "Modern digital agency web platform with responsive layouts and fluid kinetic typography.",
 		badge1: "Web Platform",
 		badge2: "TypeScript",
 		image: "/digital.png",
-		link: "https://github.com/nkrider7",
+		link: "https://digitalkosh.netlify.app/",
 		theme: "cream",
 		accentColor: "#F5F3ED",
 		ctaLabel: "Read More",
@@ -118,7 +118,7 @@ const DEFAULT_PROJECTS: ProjectShowcaseItem[] = [
 		badge1: "AI Agents",
 		badge2: "Full-Stack",
 		image: "/cybergen.png",
-		link: "https://github.com/nkrider7",
+		link: "https://cybergenerator.netlify.app/",
 		theme: "cream",
 		accentColor: "#F5F3ED",
 		ctaLabel: "Read More",

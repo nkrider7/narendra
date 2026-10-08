@@ -74,19 +74,19 @@ export default function Footer() {
 							className="inline-block"
 						>
 							<Image
-								src="/logo.svg"
+								src="/app-icon.png"
 								width={160}
 								height={48}
 								alt="BrooCode logo"
-								className="h-10 w-auto object-contain sm:h-11"
+								className="h-16 w-auto object-contain sm:h-24"
 							/>
 						</Link>
 						<p className="mt-4 font-guzan text-lg font-medium leading-snug text-white sm:text-xl">
-							Building Digital Agency
+							Building SoulSpace
 						</p>
 						<p className="mt-1 font-inter text-sm text-white/50">
-							India{" "}
-							<span className="text-white/35">202001</span>
+							Creative {" "}
+							<span className="text-white/35">Workspace</span>
 						</p>
 					</div>
 
@@ -123,7 +123,7 @@ export default function Footer() {
 
 				<div className="flex flex-col gap-5 border-t border-white/10 py-6 sm:flex-row sm:items-center sm:justify-between">
 					<p className="font-inter text-xs text-white/40 sm:text-sm">
-						© {new Date().getFullYear()} Ask BrooCode. All rights reserved.
+						© {new Date().getFullYear()} Ask Narendra. All rights reserved.
 					</p>
 
 					<div className="flex items-center gap-3">

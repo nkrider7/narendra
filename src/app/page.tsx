@@ -11,6 +11,7 @@ import TechStack from "@/components/Landing/TechStack";
 import Navbar from "@/components/Navbar";
 import ArctBox from "@/components/Landing/Arctbox";
 import PartnerHero from "@/components/Landing/PartnerHero";
+import SoulSpaceShowcase from "@/components/Landing/SoulSpaceShowcase";
 import ProjectShowcaseCarousel from "@/components/Landing/ProjectShowcaseCarousel";
 
 
@@ -24,18 +25,17 @@ export default function Home() {
         </div>
       </div>
       <PartnerHero />
+      <SoulSpaceShowcase />
       <ProjectShowcaseCarousel />
   
-      <CrewRoster />
+      
       <TechStack />
-      <ChibiCarousel />
-      <LuffyEyeHero />
-      <MarqueeDemo />
-      <RemAbout />
-      <Expand />
+     
+     
     
-      <ArctBox />
-      <SoulArise />
+    
+     
+    
       <Footer />
     </div>
   );
